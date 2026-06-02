@@ -106,6 +106,13 @@
             min-height: max(884px, 100dvh);
         }
 
+        /* Fix for computer window buttons overlapping the header */
+        .safe-header {
+            padding-top: env(titlebar-area-height, 0px);
+            padding-right: calc(env(titlebar-area-right, 0px) + 8px);
+            padding-left: env(titlebar-area-left, 0px);
+        }
+
         /* Light mode colors */
         html:not(.dark) {
             color-scheme: light;
@@ -246,7 +253,7 @@
     </style>
 </head>
 <body class="font-body-md overflow-x-hidden">
-    <header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50">
+    <header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50 safe-header">
         <div class="flex justify-between items-center px-4 md:px-margin-desktop py-4 max-w-container-max mx-auto">
             <a href="index.html" class="flex items-center gap-3 cursor-pointer active:scale-95 hover:opacity-80 transition-opacity">
                 <span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
@@ -352,7 +359,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
                     <div class="group relative glass-card rounded-xl overflow-hidden reveal">
                         <div class="h-64 overflow-hidden">
-                            <img alt="Pocket Journal App Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-quality mobile application UI mockup of a clean, minimalist journaling app called Pocket Journal. The interface is displayed on a sleek, modern smartphone floating in a dark, atmospheric studio setting. Soft indigo and cyan neon lights highlight the edges of the device, creating a premium developer portfolio aesthetic. The screen shows elegant typography and organized list views, suggesting high-performance Flutter engineering." src="assets/images/pocket-journal.jpg"/>
+                            <img alt="Pocket Journal App Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-quality mobile application UI mockup of a clean, minimalist journaling app called Pocket Journal." src="assets/images/pocket-journal.jpg"/>
                         </div>
                         <div class="p-8">
                             <div class="flex justify-between items-start mb-4">
@@ -371,7 +378,7 @@
 
                     <div class="group relative glass-card rounded-xl overflow-hidden reveal">
                         <div class="h-64 overflow-hidden">
-                            <img alt="Carpool App Interface" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A sophisticated carpool application interface design featuring a dark-themed map with vibrant neon route lines. The UI displays professional-grade user profiles and real-time ride tracking modules. The scene is rendered in a 3D isometric perspective with high-end glassmorphism effects, reflecting a modern corporate technology brand. The color palette is dominated by deep slates and electric cyans, communicating efficiency and reliability." src="assets/images/carpool-app.jpg"/>
+                            <img alt="Carpool App Interface" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A sophisticated carpool application interface design featuring a dark-themed map with vibrant neon route lines." src="assets/images/carpool-app.jpg"/>
                         </div>
                         <div class="p-8">
                             <div class="flex justify-between items-start mb-4">

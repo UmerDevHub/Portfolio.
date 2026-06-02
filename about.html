@@ -104,6 +104,13 @@
             min-height: max(884px, 100dvh);
         }
 
+        /* Fix for computer window buttons overlapping the header */
+        .safe-header {
+            padding-top: env(titlebar-area-height, 0px);
+            padding-right: calc(env(titlebar-area-right, 0px) + 8px);
+            padding-left: env(titlebar-area-left, 0px);
+        }
+
         .glass-surface {
             background: rgba(34, 42, 61, 0.5);
             backdrop-filter: blur(12px);
@@ -159,6 +166,12 @@
         html:not(.dark) header {
             background-color: rgba(255, 255, 255, 0.7) !important;
             border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* Mobile menu light mode */
+        html:not(.dark) #mobile-menu {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-color: rgba(0, 0, 0, 0.1);
         }
 
         html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 {
@@ -222,8 +235,8 @@
 </head>
 <body class="bg-background text-on-background selection:bg-primary/30 min-h-screen font-body-md overflow-x-hidden">
     <!-- TopAppBar -->
-    <header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50">
-        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+    <header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50 safe-header">
+        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto relative">
             <a href="index.html" class="flex items-center gap-2 cursor-pointer active:scale-95 hover:opacity-80 transition-opacity">
                 <span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
                 <h1 class="font-display text-headline-md font-extrabold text-primary tracking-tighter">UmerDevHub</h1>
@@ -237,8 +250,19 @@
             </nav>
             <div class="flex items-center gap-4">
                 <button class="material-symbols-outlined text-primary cursor-pointer active:scale-95" data-icon="dark_mode">dark_mode</button>
+                <!-- Hamburger Menu Button -->
+                <button class="md:hidden material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors duration-200" data-icon="menu" id="mobile-menu-btn">menu</button>
             </div>
         </div>
+
+        <!-- Mobile Navigation Menu Dropdown (Fixed positioned absolutely below header) -->
+        <nav id="mobile-menu" class="hidden absolute top-full left-0 w-full flex-col items-center py-6 bg-surface/95 backdrop-blur-xl border-b border-white/10 md:hidden shadow-lg transition-all duration-300">
+            <a class="mobile-link py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="index.html">Home</a>
+            <a class="mobile-link py-3 text-secondary font-bold text-lg w-full text-center" href="about.html">About</a>
+            <a class="mobile-link py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="services.html">Services</a>
+            <a class="mobile-link py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="projects.html">Projects</a>
+            <a class="mobile-link py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="contact.html">Contact</a>
+        </nav>
     </header>
 
     <main class="pt-32 pb-section-gap">
@@ -511,6 +535,38 @@
                         themeToggle.setAttribute('data-icon', 'dark_mode');
                         localStorage.setItem('theme', 'dark');
                     }
+                });
+            }
+
+            // Mobile menu functional logic
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            
+            if(menuBtn && mobileMenu) {
+                // Toggle menu open/close
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('flex');
+                    
+                    // Switch icon between menu and close
+                    if (mobileMenu.classList.contains('hidden')) {
+                        menuBtn.textContent = 'menu';
+                        menuBtn.setAttribute('data-icon', 'menu');
+                    } else {
+                        menuBtn.textContent = 'close';
+                        menuBtn.setAttribute('data-icon', 'close');
+                    }
+                });
+
+                // Close menu when a link is clicked
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                        menuBtn.textContent = 'menu';
+                        menuBtn.setAttribute('data-icon', 'menu');
+                    });
                 });
             }
         });
