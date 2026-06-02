@@ -119,11 +119,30 @@
 
         html:not(.dark) button {
             color: inherit !important;
+            transition: all 0.3s ease;
         }
 
         html:not(.dark) .bg-primary {
-            background-color: #4cd7f6 !important;
-            color: #1a1a1a !important;
+            background-color: #0088cc !important;
+            color: #fff !important;
+        }
+
+        html:not(.dark) .bg-primary:hover {
+            background-color: #006399 !important;
+        }
+
+        html:not(.dark) .bg-secondary {
+            background-color: #0088cc !important;
+            color: #fff !important;
+        }
+
+        html:not(.dark) .bg-secondary:hover {
+            background-color: #006399 !important;
+        }
+
+        html:not(.dark) button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         /* Smooth transition for theme switching */

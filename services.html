@@ -140,6 +140,33 @@
       color: #1a1a1a !important;
     }
 
+    html:not(.dark) button {
+      transition: all 0.3s ease;
+    }
+
+    html:not(.dark) .bg-primary {
+      background-color: #0088cc !important;
+      color: #fff !important;
+    }
+
+    html:not(.dark) .bg-primary:hover {
+      background-color: #006399 !important;
+    }
+
+    html:not(.dark) .bg-secondary {
+      background-color: #0088cc !important;
+      color: #fff !important;
+    }
+
+    html:not(.dark) .bg-secondary:hover {
+      background-color: #006399 !important;
+    }
+
+    html:not(.dark) button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     /* Smooth transition for theme switching */
     * {
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;

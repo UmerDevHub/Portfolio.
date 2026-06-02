@@ -219,6 +219,57 @@
             color: #0088cc !important;
         }
 
+        html:not(.dark) .bg-surface-container-low {
+            background-color: #f5f5f5 !important;
+        }
+
+        html:not(.dark) .border-outline-variant {
+            border-color: #d0d0d0 !important;
+        }
+
+        html:not(.dark) #gpaText {
+            color: #000 !important;
+        }
+
+        html:not(.dark) button,
+        html:not(.dark) a[class*="bg-secondary"],
+        html:not(.dark) a[class*="bg-primary"],
+        html:not(.dark) a[class*="bg-surface-container-highest"] {
+            transition: all 0.3s ease;
+        }
+
+        html:not(.dark) .bg-secondary {
+            background-color: #0088cc !important;
+            color: #fff !important;
+        }
+
+        html:not(.dark) .bg-secondary:hover {
+            background-color: #006399 !important;
+            opacity: 0.9;
+        }
+
+        html:not(.dark) .text-on-secondary {
+            color: #fff !important;
+        }
+
+        html:not(.dark) .bg-surface-container-highest {
+            background-color: #e8e8e8 !important;
+            border-color: #d0d0d0 !important;
+        }
+
+        html:not(.dark) .bg-surface-container-highest:hover {
+            background-color: #d8d8d8 !important;
+        }
+
+        html:not(.dark) .text-on-surface {
+            color: #1a1a1a !important;
+        }
+
+        html:not(.dark) button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         html:not(.dark) .bg-surface\/50 {
             background-color: rgba(255, 255, 255, 0.5) !important;
         }
@@ -319,7 +370,7 @@
                     </div>
                     <div class="mt-8 p-4 bg-surface-container-low rounded-lg border border-outline-variant flex items-center gap-4 reveal">
                         <span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
-                        <p class="font-label-md text-label-md text-on-surface font-semibold">GPA: 3.85</p>
+                        <p class="font-label-md text-label-md text-on-surface font-semibold" id="gpaText">GPA: 3.85</p>
                     </div>
                 </div>
 
