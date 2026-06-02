@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umer Nisar - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .resume {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #4cd7f6;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+        
+        .name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0b1326;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .contact-info a {
+            color: #4cd7f6;
+            text-decoration: none;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0b1326;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4cd7f6;
+            padding-left: 10px;
+        }
+        
+        .job-entry, .education-entry {
+            margin-bottom: 20px;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            color: #0b1326;
+            font-size: 16px;
+        }
+        
+        .company {
+            color: #4cd7f6;
+            font-weight: 500;
+        }
+        
+        .date {
+            color: #888;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .description {
+            margin-top: 8px;
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .skill-category {
+            margin-bottom: 10px;
+        }
+        
+        .skill-label {
+            font-weight: bold;
+            color: #0b1326;
+            margin-bottom: 5px;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 13px;
+            color: #555;
+            border: 1px solid #ddd;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+            color: #555;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .resume {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <div class="header">
+            <div class="name">UMER NISAR</div>
+            <div class="contact-info">
+                <span>📍 Rawalpindi, Pakistan</span>
+                <span>📧 <a href="mailto:contact@umerdevhub.com">contact@umerdevhub.com</a></span>
+                <span>🔗 <a href="https://github.com/UmerDevHub">GitHub</a></span>
+                <span>💼 <a href="https://linkedin.com/in/umer-dev">LinkedIn</a></span>
+            </div>
+        </div>
+        
+        <div>
+            <div class="section-title">PROFESSIONAL SUMMARY</div>
+            <p style="color: #555; line-height: 1.6; font-size: 14px;">
+                6th Semester Software Engineering student with expertise in Flutter mobile development, full-stack web engineering, and machine learning. Passionate about building scalable solutions with clean code and modern technologies. Proven track record of delivering high-performance applications with 96.6% accuracy in ML models.
+            </p>
+        </div>
+        
+        <div>
+            <div class="section-title">TECHNICAL SKILLS</div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-label">Mobile Development</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">Dart</span>
+                        <span class="skill-tag">Firebase</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-label">Frontend</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-label">Backend</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-label">Databases & Tools</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-label">Machine Learning</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">scikit-learn</span>
+                        <span class="skill-tag">NLP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-label">Other</div>
+                    <div class="skill-items">
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <div class="section-title">PROFESSIONAL EXPERIENCE</div>
+            
+            <div class="job-entry">
+                <div class="job-title">Flutter Developer Intern</div>
+                <div class="company">Tech Startup XYZ</div>
+                <div class="date">June 2023 - Present</div>
+                <ul>
+                    <li>Developed and maintained Flutter applications for iOS and Android platforms</li>
+                    <li>Integrated Firebase for authentication and real-time database operations</li>
+                    <li>Collaborated with design team to implement responsive UI/UX</li>
+                    <li>Optimized app performance, reducing load time by 40%</li>
+                </ul>
+            </div>
+            
+            <div class="job-entry">
+                <div class="job-title">Full-Stack Web Developer</div>
+                <div class="company">Freelance Projects</div>
+                <div class="date">January 2023 - Present</div>
+                <ul>
+                    <li>Built responsive web applications using React and Tailwind CSS</li>
+                    <li>Developed backend APIs using Node.js and Laravel</li>
+                    <li>Deployed applications on Railway, Vercel, and AWS</li>
+                    <li>Managed MySQL databases and optimized queries</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <div class="section-title">FEATURED PROJECTS</div>
+            
+            <div class="job-entry">
+                <div class="job-title">Pocket Journal App</div>
+                <div class="company">Flutter • Firebase • SQLite</div>
+                <div class="date">2023</div>
+                <p class="description">Secure, offline-first journaling app with cloud sync. Available on Google Play Store with 1000+ downloads.</p>
+            </div>
+            
+            <div class="job-entry">
+                <div class="job-title">Heart Disease Predictor</div>
+                <div class="company">Python • Machine Learning • Streamlit</div>
+                <div class="date">2023</div>
+                <p class="description">ML model achieving 96.6% accuracy using Random Forest algorithm. Live Streamlit dashboard for real-time predictions.</p>
+            </div>
+            
+            <div class="job-entry">
+                <div class="job-title">Watchify E-commerce Store</div>
+                <div class="company">Laravel • MySQL • Railway</div>
+                <div class="date">2023</div>
+                <p class="description">Full-featured e-commerce platform with admin dashboard, product management, and payment integration.</p>
+            </div>
+            
+            <div class="job-entry">
+                <div class="job-title">Weather App</div>
+                <div class="company">JavaScript • API • Glassmorphism</div>
+                <div class="date">2023</div>
+                <p class="description">Real-time weather application with geolocation and premium glassmorphism UI design. Deployed on Vercel.</p>
+            </div>
+        </div>
+        
+        <div>
+            <div class="section-title">EDUCATION</div>
+            
+            <div class="education-entry">
+                <div class="job-title">BS Software Engineering</div>
+                <div class="company">University (6th Semester)</div>
+                <div class="date">2021 - Present</div>
+                <p class="description">Focusing on software development, algorithms, and database design with GPA: 3.8/4.0</p>
+            </div>
+        </div>
+        
+        <div>
+            <div class="section-title">CERTIFICATIONS & ACHIEVEMENTS</div>
+            <ul>
+                <li>Flutter Development Certification - Udemy (2023)</li>
+                <li>Machine Learning Specialization - Coursera (2023)</li>
+                <li>Google Play Store Published Application (Pocket Journal)</li>
+                <li>Open Source Contributor - 5+ projects on GitHub</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - UmerDevHub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .glass-panel:hover {
+            border-color: rgba(76, 215, 246, 0.3);
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.1);
+        }
+        input:focus, textarea:focus {
+            box-shadow: 0 0 0 2px rgba(76, 215, 246, 0.2);
+            outline: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Reveal Animation Styles */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll {
+                transition: opacity 0.8s ease-out;
+                transform: none !important;
+            }
+        }
+
+        /* Light mode colors */
+        html:not(.dark) {
+            color-scheme: light;
+        }
+        
+        html:not(.dark) body {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        html:not(.dark) header {
+            background-color: rgba(255, 255, 255, 0.7) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 {
+            color: #1a1a1a;
+        }
+
+        html:not(.dark) .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(76, 215, 246, 0.2) !important;
+        }
+
+        html:not(.dark) .glass-panel:hover {
+            border-color: rgba(76, 215, 246, 0.5) !important;
+        }
+
+        html:not(.dark) input, html:not(.dark) textarea {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            color: #1a1a1a !important;
+            border-color: #e0e0e0 !important;
+        }
+
+        html:not(.dark) input::placeholder, html:not(.dark) textarea::placeholder {
+            color: #999 !important;
+        }
+
+        html:not(.dark) footer {
+            background-color: #f0f0f0 !important;
+            border-color: #e0e0e0 !important;
+        }
+
+        html:not(.dark) .text-on-surface {
+            color: #1a1a1a !important;
+        }
+
+        html:not(.dark) .text-on-surface-variant {
+            color: #666 !important;
+        }
+
+        html:not(.dark) button {
+            color: inherit !important;
+        }
+
+        html:not(.dark) .bg-primary {
+            background-color: #4cd7f6 !important;
+            color: #1a1a1a !important;
+        }
+
+        /* Smooth transition for theme switching */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb2b7",
+                      "on-tertiary-container": "#5b0017",
+                      "primary-fixed": "#e1e0ff",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#283044",
+                      "surface-bright": "#31394d",
+                      "on-surface-variant": "#c7c4d7",
+                      "on-secondary-container": "#00424e",
+                      "surface-container-low": "#131b2e",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-tertiary-fixed": "#40000d",
+                      "inverse-primary": "#494bd6",
+                      "tertiary-container": "#ff516a",
+                      "tertiary-fixed": "#ffdadb",
+                      "tertiary": "#ffb2b7",
+                      "surface-container-highest": "#2d3449",
+                      "surface-tint": "#c0c1ff",
+                      "on-error": "#690005",
+                      "on-tertiary": "#67001b",
+                      "secondary-container": "#03b5d3",
+                      "secondary": "#4cd7f6",
+                      "surface-variant": "#2d3449",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#92002a",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "surface": "#0b1326",
+                      "on-primary-container": "#0d0096",
+                      "on-primary": "#1000a9",
+                      "on-primary-fixed": "#07006c",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-surface": "#dae2fd",
+                      "on-secondary": "#003640",
+                      "surface-dim": "#0b1326",
+                      "primary-container": "#8083ff",
+                      "on-background": "#dae2fd",
+                      "surface-container-lowest": "#060e20",
+                      "background": "#0b1326",
+                      "surface-container": "#171f33",
+                      "primary": "#c0c1ff",
+                      "secondary-fixed": "#acedff",
+                      "outline-variant": "#464554",
+                      "outline": "#908fa0",
+                      "on-secondary-fixed": "#001f26",
+                      "surface-container-high": "#222a3d",
+                      "inverse-surface": "#dae2fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px",
+                      "unit": "4px",
+                      "section-gap": "120px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display": ["Inter"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-lg": ["Inter"],
+                      "code-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+      </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50">
+<div class="flex justify-between items-center px-4 md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<a href="index.html" class="flex items-center gap-3 cursor-pointer active:scale-95 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<span class="font-display text-headline-md font-extrabold text-primary tracking-tighter">UmerDevHub</span>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="index.html">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="about.html">About</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="services.html">Services</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="projects.html">Projects</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1" href="contact.html">Contact</a>
+</nav>
+<button class="material-symbols-outlined text-primary cursor-pointer active:scale-95" data-icon="dark_mode">dark_mode</button>
+</div>
+</header>
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="mb-20">
+<h1 class="font-display text-headline-lg-mobile md:text-display text-primary mb-6">Let's Connect</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">
+                Ready to transform your ideas into high-performance digital experiences? Whether you have a project in mind or just want to chat about engineering, I'm just a message away.
+            </p>
+</section>
+<!-- Bento Grid Contact Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Contact Form (Bento Large) -->
+<div class="md:col-span-8 glass-panel p-8 rounded-xl reveal-on-scroll">
+<form class="space-y-6" id="contactForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-secondary" for="name">Name</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="name" placeholder="John Doe" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-secondary" for="email">Email</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="email" placeholder="john@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-secondary" for="subject">Subject</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="subject" placeholder="Project Inquiry" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-secondary" for="message">Message</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all resize-none" id="message" placeholder="How can I help you?" required="" rows="5"></textarea>
+</div>
+<button class="w-full md:w-auto px-12 py-4 bg-primary text-on-primary font-bold rounded-lg hover:shadow-[0_0_20px_rgba(192,193,255,0.4)] transition-all active:scale-95 flex items-center justify-center gap-2" type="submit">
+                        Send Message
+                        <span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</form>
+<!-- Success Message Placeholder -->
+<div class="hidden mt-8 p-6 bg-secondary-container/20 border border-secondary/30 rounded-lg text-center" id="successMessage">
+<span class="material-symbols-outlined text-secondary text-4xl mb-2" data-icon="check_circle">check_circle</span>
+<p class="font-body-lg text-on-surface">Thank you, Umer will get back to you soon!</p>
+</div>
+</div>
+<!-- Social & Location (Bento Small Cluster) -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Social Links -->
+<div class="glass-panel p-8 rounded-xl flex-grow reveal-on-scroll" style="transition-delay: 0.1s;">
+<h3 class="font-label-md text-secondary mb-6 uppercase tracking-widest">Connect Online</h3>
+<div class="space-y-4">
+<a class="flex items-center justify-between group p-3 hover:bg-white/5 rounded-lg transition-all" href="https://github.com/UmerDevHub" target="_blank">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="terminal">terminal</span>
+<span class="font-body-md">GitHub (UmerDevHub)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
+</a>
+<a class="flex items-center justify-between group p-3 hover:bg-white/5 rounded-lg transition-all" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="person_add">person_add</span>
+<span class="font-body-md">LinkedIn</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
+</a>
+<a class="flex items-center justify-between group p-3 hover:bg-white/5 rounded-lg transition-all" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="chat">chat</span>
+<span class="font-body-md">Twitter</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Location Map Placeholder -->
+<div class="glass-panel rounded-xl overflow-hidden group reveal-on-scroll" style="transition-delay: 0.2s;">
+<div class="h-48 w-full relative">
+<img alt="Rawalpindi Pakistan Map" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="A stylized digital map representation of Rawalpindi, Pakistan, viewed from a high-angle perspective. The aesthetic is dark and futuristic, with city streets glowing in vibrant cyan and indigo neon lines against a deep slate background. The lighting mimics a high-tech interface, featuring subtle data overlays and a premium glassmorphism finish that aligns with a high-performance developer portfolio style." data-location="Rawalpindi, Pakistan" src="assets/images/location-map.svg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<div class="flex items-center gap-2 bg-surface/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label-md text-on-surface">Rawalpindi, Pakistan</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-4 md:px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="mb-6 md:mb-0">
+<span class="font-display text-body-lg font-bold text-primary">UmerDevHub</span>
+<p class="font-label-md text-on-surface-variant mt-2">© 2024 UmerDevHub. Engineered for Performance.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://github.com/UmerDevHub" target="_blank">GitHub</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://linkedin.com/in/umer-dev" target="_blank">LinkedIn</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="mailto:contact@umerdevhub.com">Email</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll Reveal Implementation using Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Once revealed, we can stop observing this specific element
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            revealElements.forEach(el => observer.observe(el));
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Validate form
+            if(!formData.name || !formData.email || !formData.subject || !formData.message) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailRegex.test(formData.email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Save to localStorage for demonstration
+            localStorage.setItem('lastContactForm', JSON.stringify({
+                ...formData,
+                timestamp: new Date().toISOString()
+            }));
+            
+            // Show success message
+            this.classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+            
+            // Auto-send notification (you can integrate with EmailJS here)
+            console.log('Form submitted:', formData);
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                this.classList.remove('hidden');
+                document.getElementById('successMessage').classList.add('hidden');
+                this.reset();
+            }, 3000);
+        });
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.querySelector('[data-icon="dark_mode"]');
+        
+        if(themeToggle) {
+            // Load theme from localStorage
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const htmlElement = document.documentElement;
+            
+            if(savedTheme === 'light') {
+                htmlElement.classList.remove('dark');
+                themeToggle.textContent = 'light_mode';
+                themeToggle.setAttribute('data-icon', 'light_mode');
+            } else {
+                htmlElement.classList.add('dark');
+                themeToggle.textContent = 'dark_mode';
+                themeToggle.setAttribute('data-icon', 'dark_mode');
+            }
+            
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', () => {
+                const isDark = htmlElement.classList.contains('dark');
+                
+                if(isDark) {
+                    htmlElement.classList.remove('dark');
+                    themeToggle.textContent = 'light_mode';
+                    themeToggle.setAttribute('data-icon', 'light_mode');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    themeToggle.textContent = 'dark_mode';
+                    themeToggle.setAttribute('data-icon', 'dark_mode');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
+
+        // Social links handler
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const text = this.querySelector('.font-body-md').innerText;
+                alert(text + ' link will be updated soon!');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Umer | Software Engineering Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "on-tertiary-container": "#5b0017",
+                        "primary-fixed": "#e1e0ff",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "surface-bright": "#31394d",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-secondary-container": "#00424e",
+                        "surface-container-low": "#131b2e",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-tertiary-fixed": "#40000d",
+                        "inverse-primary": "#494bd6",
+                        "tertiary-container": "#ff516a",
+                        "tertiary-fixed": "#ffdadb",
+                        "tertiary": "#ffb2b7",
+                        "surface-container-highest": "#2d3449",
+                        "surface-tint": "#c0c1ff",
+                        "on-error": "#690005",
+                        "on-tertiary": "#67001b",
+                        "secondary-container": "#03b5d3",
+                        "secondary": "#4cd7f6",
+                        "surface-variant": "#2d3449",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface": "#0b1326",
+                        "on-primary-container": "#0d0096",
+                        "on-primary": "#1000a9",
+                        "on-primary-fixed": "#07006c",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-surface": "#dae2fd",
+                        "on-secondary": "#003640",
+                        "surface-dim": "#0b1326",
+                        "primary-container": "#8083ff",
+                        "on-background": "#dae2fd",
+                        "surface-container-lowest": "#060e20",
+                        "background": "#0b1326",
+                        "surface-container": "#171f33",
+                        "primary": "#c0c1ff",
+                        "secondary-fixed": "#acedff",
+                        "outline-variant": "#464554",
+                        "outline": "#908fa0",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-high": "#222a3d",
+                        "inverse-surface": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+
+        .glass-surface {
+            background: rgba(34, 42, 61, 0.5);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .skill-glow:hover {
+            box-shadow: 0 0 15px rgba(76, 215, 246, 0.2);
+            border-color: rgba(76, 215, 246, 0.5);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(to right, #c0c1ff, #4cd7f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll Reveal Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+        
+        .reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Light mode colors */
+        html:not(.dark) {
+            color-scheme: light;
+        }
+        
+        html:not(.dark) body {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        html:not(.dark) header {
+            background-color: rgba(255, 255, 255, 0.7) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 {
+            color: #1a1a1a;
+        }
+
+        html:not(.dark) .glass-surface {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(76, 215, 246, 0.2) !important;
+        }
+
+        html:not(.dark) .glass-surface:hover {
+            border-color: rgba(76, 215, 246, 0.5) !important;
+        }
+
+        html:not(.dark) footer {
+            background-color: #f0f0f0 !important;
+            border-color: #e0e0e0 !important;
+        }
+
+        html:not(.dark) .text-on-surface {
+            color: #1a1a1a !important;
+        }
+
+        html:not(.dark) .text-on-surface-variant {
+            color: #666 !important;
+        }
+
+        html:not(.dark) .text-gradient {
+            background: linear-gradient(to right, #333, #4cd7f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        html:not(.dark) .skill-glow {
+            background-color: #f0f0f0 !important;
+            border-color: #e0e0e0 !important;
+        }
+
+        html:not(.dark) .text-primary {
+            color: #333 !important;
+        }
+
+        html:not(.dark) .text-secondary {
+            color: #0088cc !important;
+        }
+
+        html:not(.dark) .bg-surface\/50 {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        html:not(.dark) .border-white\/10 {
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* Smooth transition for theme switching */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary/30 min-h-screen font-body-md overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+            <a href="index.html" class="flex items-center gap-2 cursor-pointer active:scale-95 hover:opacity-80 transition-opacity">
+                <span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+                <h1 class="font-display text-headline-md font-extrabold text-primary tracking-tighter">UmerDevHub</h1>
+            </a>
+            <nav class="hidden md:flex gap-8">
+                <a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="index.html">Home</a>
+                <a class="text-secondary font-bold border-b-2 border-secondary pb-1" href="about.html">About</a>
+                <a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="services.html">Services</a>
+                <a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="projects.html">Projects</a>
+                <a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="contact.html">Contact</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="material-symbols-outlined text-primary cursor-pointer active:scale-95" data-icon="dark_mode">dark_mode</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-section-gap">
+        <!-- Hero Section -->
+        <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <p class="font-label-md text-label-md text-secondary mb-4 flex items-center gap-2">
+                        <span class="w-8 h-[1px] bg-secondary"></span>
+                        DEVELOPER PROFILE
+                    </p>
+                    <h2 class="font-display text-headline-lg-mobile md:text-display text-on-surface mb-6">
+                        Architecting <span class="text-gradient">Logic</span> with Creativity.
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl">
+                        I am a Software Engineering student currently in my 6th Semester, dedicated to building high-performance mobile and web applications. My focus lies at the intersection of robust backend architectures and fluid user experiences.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-primary hover:bg-primary-container text-on-primary font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-[0_0_15px_rgba(192,193,255,0.3)] active:scale-95">
+                            Download Resume
+                        </button>
+                        <button class="border-1.5 border-secondary text-secondary hover:bg-secondary/10 font-bold py-3 px-8 rounded-lg transition-all duration-300 active:scale-95">
+                            Let's Collaborate
+                        </button>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 flex justify-center reveal">
+                    <div class="relative w-full aspect-square max-w-[480px]">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl"></div>
+                        <img alt="Umer" class="w-full h-full object-cover rounded-xl glass-surface p-2 grayscale-[20%] hover:grayscale-0 transition-all duration-700" data-alt="A professional portrait of a confident young South Asian male software engineer with short dark hair and a focused expression. He is wearing a dark minimalist hoodie, sitting in a modern, low-lit studio environment that suggests a high-tech laboratory or developer workspace. Subtle cyan and indigo neon lights accent the background, creating a moody, cinematic atmosphere with sharp focus on the subject. The lighting is sophisticated, emphasizing textures and professional depth." src="assets/images/umer-profile.png"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Experience Bento Grid -->
+        <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
+            <div class="grid md:grid-cols-3 gap-gutter">
+                <!-- Education -->
+                <div class="md:col-span-2 glass-surface p-8 rounded-xl flex flex-col justify-between reveal">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-secondary" data-icon="school">school</span>
+                            <h3 class="font-headline-md text-headline-md text-on-surface">Academic Journey</h3>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-outline-variant pl-6 relative reveal">
+                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-secondary"></div>
+                                <h4 class="font-body-lg text-body-lg text-primary font-bold">BS Software Engineering</h4>
+                                <p class="text-on-surface-variant font-label-md text-label-md mb-2">6th Semester • Present</p>
+                                <p class="text-on-surface-variant">Deepening expertise in Software Design Patterns, Distributed Systems, and Advanced Algorithms. Focusing on building scalable, industry-standard solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 p-4 bg-surface-container-low rounded-lg border border-outline-variant flex items-center gap-4 reveal">
+                        <span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+                        <p class="font-label-md text-label-md text-on-surface">GPA consistently in the top tier of the cohort.</p>
+                    </div>
+                </div>
+
+                <!-- Flutter Experience -->
+                <div class="glass-surface p-8 rounded-xl skill-glow transition-all duration-300 reveal">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-secondary" data-icon="phone_iphone">phone_iphone</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface">Flutter Dev</h3>
+                    </div>
+                    <p class="text-on-surface-variant mb-6">Specializing in cross-platform mobile excellence. I build native-performance apps with intricate UI animations and state management.</p>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                            <span class="font-label-md text-label-md">Provider / Riverpod</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                            <span class="font-label-md text-label-md">Custom Painters</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                            <span class="font-label-md text-label-md">Firebase Integration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
+            <h3 class="font-display text-headline-lg text-center mb-16 reveal">The <span class="text-gradient">Stack</span> I Mastered</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill 1 -->
+                <div class="space-y-4 reveal">
+                    <div class="flex justify-between items-end">
+                        <span class="font-label-md text-label-md text-on-surface">Flutter & Dart</span>
+                        <span class="font-code-sm text-code-sm text-secondary">0x001</span>
+                    </div>
+                    <div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-secondary to-primary" style="width: 92%;"></div>
+                    </div>
+                    <p class="font-code-sm text-code-sm text-on-surface-variant">Mobile ecosystem, UI/UX, State Management.</p>
+                </div>
+                <!-- Skill 2 -->
+                <div class="space-y-4 reveal">
+                    <div class="flex justify-between items-end">
+                        <span class="font-label-md text-label-md text-on-surface">Node.js</span>
+                        <span class="font-code-sm text-code-sm text-secondary">0x002</span>
+                    </div>
+                    <div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-secondary to-primary" style="width: 85%;"></div>
+                    </div>
+                    <p class="font-code-sm text-code-sm text-on-surface-variant">RESTful APIs, Microservices, Real-time apps.</p>
+                </div>
+                <!-- Skill 3 -->
+                <div class="space-y-4 reveal">
+                    <div class="flex justify-between items-end">
+                        <span class="font-label-md text-label-md text-on-surface">MongoDB</span>
+                        <span class="font-code-sm text-code-sm text-secondary">0x003</span>
+                    </div>
+                    <div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-secondary to-primary" style="width: 80%;"></div>
+                    </div>
+                    <p class="font-code-sm text-code-sm text-on-surface-variant">NoSQL Architecture, Aggregations.</p>
+                </div>
+                <!-- Skill 4 -->
+                <div class="space-y-4 reveal">
+                    <div class="flex justify-between items-end">
+                        <span class="font-label-md text-label-md text-on-surface">Laravel</span>
+                        <span class="font-code-sm text-code-sm text-secondary">0x004</span>
+                    </div>
+                    <div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-secondary to-primary" style="width: 75%;"></div>
+                    </div>
+                    <p class="font-code-sm text-code-sm text-on-surface-variant">PHP, MVC, Robust Web Backends.</p>
+                </div>
+                <!-- Skill 5 -->
+                <div class="space-y-4 reveal">
+                    <div class="flex justify-between items-end">
+                        <span class="font-label-md text-label-md text-on-surface">Python & ML</span>
+                        <span class="font-code-sm text-code-sm text-secondary">0x005</span>
+                    </div>
+                    <div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-secondary to-primary" style="width: 70%;"></div>
+                    </div>
+                    <p class="font-code-sm text-code-sm text-on-surface-variant">Data Analysis, TensorFlow, Scikit-learn.</p>
+                </div>
+                <!-- Badges -->
+                <div class="flex flex-wrap gap-3 content-center h-full pt-4 md:pt-0 reveal">
+                    <span class="px-4 py-2 bg-surface-container-high border border-outline-variant rounded-full font-label-md text-label-md text-secondary skill-glow cursor-default transition-all">Git</span>
+                    <span class="px-4 py-2 bg-surface-container-high border border-outline-variant rounded-full font-label-md text-label-md text-secondary skill-glow cursor-default transition-all">Docker</span>
+                    <span class="px-4 py-2 bg-surface-container-high border border-outline-variant rounded-full font-label-md text-label-md text-secondary skill-glow cursor-default transition-all">AWS</span>
+                    <span class="px-4 py-2 bg-surface-container-high border border-outline-variant rounded-full font-label-md text-label-md text-secondary skill-glow cursor-default transition-all">SQL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Availability Banner -->
+        <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop reveal">
+            <div class="glass-surface p-12 rounded-xl text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-32 h-32 bg-primary/10 blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="absolute bottom-0 right-0 w-32 h-32 bg-secondary/10 blur-3xl translate-x-1/2 translate-y-1/2"></div>
+                <h3 class="font-display text-headline-md md:text-headline-lg text-on-surface mb-6 relative z-10">Currently Available.</h3>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl mx-auto relative z-10">
+                    Open to <span class="text-primary font-bold">Internships</span>, <span class="text-primary font-bold">Freelance</span> projects, and <span class="text-primary font-bold">Collaborations</span> with forward-thinking teams.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+                    <a class="bg-secondary hover:bg-secondary-container text-on-secondary font-bold py-4 px-10 rounded-lg transition-all duration-300 flex items-center justify-center gap-2" href="mailto:contact@umerdevhub.com">
+                        <span class="material-symbols-outlined" data-icon="mail">mail</span>
+                        Hire Me
+                    </a>
+                    <a class="bg-surface-container-highest hover:bg-surface-variant text-on-surface font-bold py-4 px-10 rounded-lg transition-all duration-300 border border-outline-variant flex items-center justify-center gap-2" href="#">
+                        <span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+                        Collaborate
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant">
+        <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto">
+            <div class="mb-8 md:mb-0 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+                    <h4 class="font-display text-body-lg font-bold text-primary">UmerDevHub</h4>
+                </div>
+                <p class="font-label-md text-label-md text-on-surface-variant max-w-xs">
+                    © 2024 UmerDevHub. Engineered for Performance.
+                </p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://github.com/UmerDevHub" target="_blank">GitHub</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://linkedin.com/in/umer-dev" target="_blank">LinkedIn</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="mailto:contact@umerdevhub.com">Email</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-active');
+                        // Once animated, stop observing
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const revealObserver = new IntersectionObserver(revealCallback, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Skill bar specific animation (integrated with reveal)
+            const skillBars = document.querySelectorAll('.h-full.bg-gradient-to-r');
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const finalWidth = bar.style.width;
+                        bar.style.width = '0';
+                        // Delay slightly to wait for the container reveal
+                        setTimeout(() => {
+                            bar.style.transition = 'width 1.5s cubic-bezier(0.65, 0, 0.35, 1)';
+                            bar.style.width = finalWidth;
+                        }, 300);
+                        skillObserver.unobserve(bar);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            skillBars.forEach(bar => skillObserver.observe(bar));
+
+            // Dark/Light Mode Toggle
+            const themeToggle = document.querySelector('[data-icon="dark_mode"]');
+            
+            if(themeToggle) {
+                // Load theme from localStorage
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                const htmlElement = document.documentElement;
+                
+                if(savedTheme === 'light') {
+                    htmlElement.classList.remove('dark');
+                    themeToggle.textContent = 'light_mode';
+                    themeToggle.setAttribute('data-icon', 'light_mode');
+                } else {
+                    htmlElement.classList.add('dark');
+                    themeToggle.textContent = 'dark_mode';
+                    themeToggle.setAttribute('data-icon', 'dark_mode');
+                }
+                
+                // Toggle theme on button click
+                themeToggle.addEventListener('click', () => {
+                    const isDark = htmlElement.classList.contains('dark');
+                    
+                    if(isDark) {
+                        htmlElement.classList.remove('dark');
+                        themeToggle.textContent = 'light_mode';
+                        themeToggle.setAttribute('data-icon', 'light_mode');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        htmlElement.classList.add('dark');
+                        themeToggle.textContent = 'dark_mode';
+                        themeToggle.setAttribute('data-icon', 'dark_mode');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

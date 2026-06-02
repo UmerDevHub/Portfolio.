@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      background-color: #0b1326;
+      color: #dae2fd;
+      -webkit-font-smoothing: antialiased;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(76, 215, 246, 0.4);
+      box-shadow: 0 0 20px rgba(76, 215, 246, 0.1);
+      transform: translateY(-4px);
+    }
+    .text-gradient-cyan-indigo {
+      background: linear-gradient(to right, #4cd7f6, #c0c1ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .cursor-underscore::after {
+      content: '_';
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Scroll Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* Light mode colors */
+    html:not(.dark) {
+      color-scheme: light;
+    }
+    
+    html:not(.dark) body {
+      background-color: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    html:not(.dark) header {
+      background-color: rgba(255, 255, 255, 0.7) !important;
+      border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 {
+      color: #1a1a1a;
+    }
+
+    html:not(.dark) .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(76, 215, 246, 0.2) !important;
+    }
+
+    html:not(.dark) .glass-card:hover {
+      border-color: rgba(76, 215, 246, 0.5) !important;
+    }
+
+    html:not(.dark) footer {
+      background-color: #f0f0f0 !important;
+      border-color: #e0e0e0 !important;
+    }
+
+    html:not(.dark) .text-on-surface {
+      color: #1a1a1a !important;
+    }
+
+    html:not(.dark) .text-on-surface-variant {
+      color: #666 !important;
+    }
+
+    html:not(.dark) .text-gradient-cyan-indigo {
+      background: linear-gradient(to right, #333, #4cd7f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    html:not(.dark) .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    html:not(.dark) .bg-surface-container-low {
+      background-color: #f0f0f0 !important;
+    }
+
+    html:not(.dark) .bg-surface-container-highest {
+      background-color: #e8e8e8 !important;
+    }
+
+    html:not(.dark) .border-outline-variant {
+      border-color: #ccc !important;
+    }
+
+    html:not(.dark) h4 {
+      color: #1a1a1a !important;
+    }
+
+    /* Smooth transition for theme switching */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#ffb2b7",
+            "on-tertiary-container": "#5b0017",
+            "primary-fixed": "#e1e0ff",
+            "on-error-container": "#ffdad6",
+            "inverse-on-surface": "#283044",
+            "surface-bright": "#31394d",
+            "on-surface-variant": "#c7c4d7",
+            "on-secondary-container": "#00424e",
+            "surface-container-low": "#131b2e",
+            "on-secondary-fixed-variant": "#004e5c",
+            "error": "#ffb4ab",
+            "secondary-fixed-dim": "#4cd7f6",
+            "on-tertiary-fixed": "#40000d",
+            "inverse-primary": "#494bd6",
+            "tertiary-container": "#ff516a",
+            "tertiary-fixed": "#ffdadb",
+            "tertiary": "#ffb2b7",
+            "surface-container-highest": "#2d3449",
+            "surface-tint": "#c0c1ff",
+            "on-error": "#690005",
+            "on-tertiary": "#67001b",
+            "secondary-container": "#03b5d3",
+            "secondary": "#4cd7f6",
+            "surface-variant": "#2d3449",
+            "error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#92002a",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "surface": "#0b1326",
+            "on-primary-container": "#0d0096",
+            "on-primary": "#1000a9",
+            "on-primary-fixed": "#07006c",
+            "primary-fixed-dim": "#c0c1ff",
+            "on-surface": "#dae2fd",
+            "on-secondary": "#003640",
+            "surface-dim": "#0b1326",
+            "primary-container": "#8083ff",
+            "on-background": "#dae2fd",
+            "surface-container-lowest": "#060e20",
+            "background": "#0b1326",
+            "surface-container": "#171f33",
+            "primary": "#c0c1ff",
+            "secondary-fixed": "#acedff",
+            "outline-variant": "#464554",
+            "outline": "#908fa0",
+            "on-secondary-fixed": "#001f26",
+            "surface-container-high": "#222a3d",
+            "inverse-surface": "#dae2fd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "24px",
+            "margin-mobile": "16px",
+            "margin-desktop": "64px",
+            "container-max": "1280px",
+            "unit": "4px",
+            "section-gap": "120px"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg": ["Inter"],
+            "code-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "headline-md": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}],
+            "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+            "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-background selection:bg-secondary/30 selection:text-secondary">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50">
+<div class="flex justify-between items-center px-4 md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<a href="index.html" class="flex items-center gap-3 cursor-pointer active:scale-95 group hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="terminal">terminal</span>
+<span class="font-display text-headline-md font-extrabold text-primary tracking-tighter">UmerDevHub</span>
+</a>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="index.html">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="about.html">About</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1" href="services.html">Services</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="projects.html">Projects</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="contact.html">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary cursor-pointer active:scale-95" data-icon="dark_mode">dark_mode</button>
+<button class="md:hidden material-symbols-outlined text-on-surface-variant" data-icon="menu">menu</button>
+</div>
+</div>
+</header>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-4 md:px-margin-desktop mb-section-gap">
+<div class="flex flex-col gap-6 max-w-3xl">
+<div class="flex items-center gap-2">
+<div class="h-[2px] w-12 bg-secondary"></div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Engineering Excellence</span>
+</div>
+<h1 class="font-display text-headline-lg-mobile md:text-display text-on-surface leading-tight">
+          Services I Offer
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          I bridge the gap between complex engineering requirements and elegant user experiences, delivering scalable full-stack solutions tailored for modern digital ecosystems.
+        </p>
+</div>
+</section>
+<!-- Services Grid (Bento Style) -->
+<section class="max-w-container-max mx-auto px-4 md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Service 1: Mobile App Development -->
+<div class="reveal md:col-span-7 glass-card p-8 rounded-xl flex flex-col justify-between min-h-[400px] overflow-hidden relative group">
+<div class="relative z-10">
+<div class="w-14 h-14 bg-primary-container/20 rounded-lg flex items-center justify-center mb-8 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="phone_iphone">phone_iphone</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Mobile App Development</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-8">
+              Crafting high-performance, native-feel applications for iOS and Android using cross-platform architectures that reduce time-to-market without compromising quality.
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-md text-label-md px-3 py-1 bg-surface-container-highest text-secondary rounded">Flutter</span>
+<span class="font-label-md text-label-md px-3 py-1 bg-surface-container-highest text-secondary rounded">Dart</span>
+<span class="font-label-md text-label-md px-3 py-1 bg-surface-container-highest text-secondary rounded">Cross-platform</span>
+</div>
+</div>
+<!-- Decorative UI Mockup Element -->
+<div class="absolute -right-12 -bottom-12 w-64 h-96 bg-gradient-to-br from-primary/10 to-transparent border border-white/5 rounded-3xl transform rotate-12 group-hover:rotate-6 transition-transform duration-500 hidden md:block"></div>
+</div>
+<!-- Service 2: Full-Stack Web -->
+<div class="reveal md:col-span-5 glass-card p-8 rounded-xl flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="w-14 h-14 bg-secondary-container/20 rounded-lg flex items-center justify-center mb-8 border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="web">web</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Full-Stack Web Development</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+              End-to-end web architectures featuring interactive front-ends and robust server-side logic.
+            </p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="terminal">terminal</span> Node.js &amp; Laravel
+              </li>
+<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="terminal">terminal</span> React &amp; Tailwind CSS
+              </li>
+<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="terminal">terminal</span> Responsive Design
+              </li>
+</ul>
+</div>
+<button class="mt-8 font-label-md text-label-md text-secondary border border-secondary/30 py-3 px-6 rounded-lg hover:bg-secondary/10 transition-colors uppercase tracking-widest text-center">View Projects</button>
+</div>
+<!-- Service 3: Machine Learning -->
+<div class="reveal md:col-span-5 glass-card p-8 rounded-xl flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="w-14 h-14 bg-tertiary-container/20 rounded-lg flex items-center justify-center mb-8 border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Machine Learning Solutions</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+              Integrating intelligence into your applications through data analysis, predictive modeling, and natural language processing.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded border border-outline-variant font-code-sm text-code-sm text-tertiary-fixed-dim">
+<span class="text-on-surface-variant"># NLP Predictor</span><br/>
+            model.fit(X_train, y_train)<br/>
+            prediction = model.predict(query)<br/>
+<span class="cursor-underscore">print(prediction)</span>
+</div>
+</div>
+<!-- Service 4: Backend Engineering -->
+<div class="reveal md:col-span-7 glass-card p-8 rounded-xl flex flex-col md:flex-row gap-8 items-center min-h-[400px]">
+<div class="flex-1">
+<div class="w-14 h-14 bg-primary-container/20 rounded-lg flex items-center justify-center mb-8 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="database">database</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Backend &amp; API Engineering</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+              Architecting the backbone of modern applications with high-availability databases, secure API gateways, and serverless infrastructure.
+            </p>
+<div class="flex gap-4">
+<div class="text-center">
+<div class="font-headline-md text-primary">99.9%</div>
+<div class="font-label-md text-on-surface-variant">Uptime</div>
+</div>
+<div class="w-[1px] bg-outline-variant h-10 self-center"></div>
+<div class="text-center">
+<div class="font-headline-md text-secondary">100ms</div>
+<div class="font-label-md text-on-surface-variant">Latency</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full grid grid-cols-2 gap-4">
+<div class="bg-surface-container-high p-4 rounded-xl border border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="storage">storage</span>
+<span class="font-label-md text-on-surface">MongoDB</span>
+</div>
+<div class="bg-surface-container-high p-4 rounded-xl border border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="local_fire_department">local_fire_department</span>
+<span class="font-label-md text-on-surface">Firebase</span>
+</div>
+<div class="bg-surface-container-high p-4 rounded-xl border border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="api">api</span>
+<span class="font-label-md text-on-surface">Express</span>
+</div>
+<div class="bg-surface-container-high p-4 rounded-xl border border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="security">security</span>
+<span class="font-label-md text-on-surface">OAuth 2.0</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Work Process Section -->
+<section class="mt-section-gap py-section-gap bg-surface-container-low border-y border-outline-variant">
+<div class="max-w-container-max mx-auto px-4 md:px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg text-center mb-24">The Engineering Process</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter relative">
+<!-- Connector line -->
+<div class="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-outline to-transparent opacity-20"></div>
+<!-- Step 1 -->
+<div class="reveal text-center relative z-10 group" data-delay="0">
+<div class="w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-outline-variant group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="forum">forum</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2 text-[20px]">Discovery</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Deep dive into project goals and technical constraints.</p>
+</div>
+<!-- Step 2 -->
+<div class="reveal text-center relative z-10 group" data-delay="1">
+<div class="w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-outline-variant group-hover:border-secondary transition-colors">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="architecture">architecture</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2 text-[20px]">Architecture</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Defining data models, API schemas, and UI components.</p>
+</div>
+<!-- Step 3 -->
+<div class="reveal text-center relative z-10 group" data-delay="2">
+<div class="w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-outline-variant group-hover:border-tertiary transition-colors">
+<span class="material-symbols-outlined text-tertiary text-4xl" data-icon="code">code</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2 text-[20px]">Iteration</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Agile development cycles with continuous testing.</p>
+</div>
+<!-- Step 4 -->
+<div class="reveal text-center relative z-10 group" data-delay="3">
+<div class="w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-outline-variant group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim text-4xl" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2 text-[20px]">Deployment</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Optimized build pipelines and cloud integration.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Call to Action -->
+<section class="max-w-container-max mx-auto px-4 md:px-margin-desktop py-section-gap">
+<div class="reveal glass-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
+<div class="flex-1">
+<h2 class="font-headline-lg text-headline-lg mb-6">Ready to scale your vision?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+            Whether it's a mobile app or a data-driven enterprise solution, I'm ready to help you engineer the next big thing.
+          </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+<button class="bg-primary hover:bg-primary/90 text-on-primary font-label-md text-label-md px-10 py-4 rounded-lg transition-all active:scale-95 shadow-[0_0_20px_rgba(192,193,255,0.2)]">
+              HIRE ME NOW
+            </button>
+<button class="border border-secondary hover:bg-secondary/10 text-secondary font-label-md text-label-md px-10 py-4 rounded-lg transition-all active:scale-95">
+              DOWNLOAD CV
+            </button>
+</div>
+</div>
+<div class="hidden md:block w-72 h-72 rounded-full border-4 border-dashed border-outline-variant animate-[spin_20s_linear_infinite] p-4">
+<div class="w-full h-full rounded-full border-2 border-primary/20 flex items-center justify-center bg-surface-container-highest relative overflow-hidden">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="bolt">bolt</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-4 md:px-margin-desktop py-12 mt-section-gap max-w-container-max mx-auto">
+<div class="flex flex-col gap-4 mb-8 md:mb-0">
+<div class="font-display text-body-lg font-bold text-primary">UmerDevHub</div>
+<p class="font-label-md text-label-md text-on-surface-variant">© 2024 UmerDevHub. Engineered for Performance.</p>
+</div>
+<div class="flex flex-wrap gap-8 justify-center items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://github.com/UmerDevHub" target="_blank">GitHub</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://linkedin.com/in/umer-dev" target="_blank">LinkedIn</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="mailto:contact@umerdevhub.com">Email</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const delayMultiplier = element.getAttribute('data-delay');
+          
+          if (delayMultiplier !== null) {
+            // Apply staggered delay if attribute exists
+            setTimeout(() => {
+              element.classList.add('active');
+            }, delayMultiplier * 200);
+          } else {
+            element.classList.add('active');
+          }
+          
+          // Unobserve after animating in
+          revealObserver.unobserve(element);
+        }
+      });
+    }, observerOptions);
+
+    // Select all reveal elements
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Dark/Light Mode Toggle
+    const themeToggle = document.querySelector('[data-icon="dark_mode"]');
+    
+    if(themeToggle) {
+      // Load theme from localStorage
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      const htmlElement = document.documentElement;
+      
+      if(savedTheme === 'light') {
+        htmlElement.classList.remove('dark');
+        themeToggle.textContent = 'light_mode';
+        themeToggle.setAttribute('data-icon', 'light_mode');
+      } else {
+        htmlElement.classList.add('dark');
+        themeToggle.textContent = 'dark_mode';
+        themeToggle.setAttribute('data-icon', 'dark_mode');
+      }
+      
+      // Toggle theme on button click
+      themeToggle.addEventListener('click', () => {
+        const isDark = htmlElement.classList.contains('dark');
+        
+        if(isDark) {
+          htmlElement.classList.remove('dark');
+          themeToggle.textContent = 'light_mode';
+          themeToggle.setAttribute('data-icon', 'light_mode');
+          localStorage.setItem('theme', 'light');
+        } else {
+          htmlElement.classList.add('dark');
+          themeToggle.textContent = 'dark_mode';
+          themeToggle.setAttribute('data-icon', 'dark_mode');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    }
+  });
+</script>
+</body></html>

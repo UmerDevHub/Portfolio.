@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb2b7",
+                    "on-tertiary-container": "#5b0017",
+                    "primary-fixed": "#e1e0ff",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#283044",
+                    "surface-bright": "#31394d",
+                    "on-surface-variant": "#c7c4d7",
+                    "on-secondary-container": "#00424e",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-fixed": "#40000d",
+                    "inverse-primary": "#494bd6",
+                    "tertiary-container": "#ff516a",
+                    "tertiary-fixed": "#ffdadb",
+                    "tertiary": "#ffb2b7",
+                    "surface-container-highest": "#2d3449",
+                    "surface-tint": "#c0c1ff",
+                    "on-error": "#690005",
+                    "on-tertiary": "#67001b",
+                    "secondary-container": "#03b5d3",
+                    "secondary": "#4cd7f6",
+                    "surface-variant": "#2d3449",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#92002a",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "surface": "#0b1326",
+                    "on-primary-container": "#0d0096",
+                    "on-primary": "#1000a9",
+                    "on-primary-fixed": "#07006c",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-surface": "#dae2fd",
+                    "on-secondary": "#003640",
+                    "surface-dim": "#0b1326",
+                    "primary-container": "#8083ff",
+                    "on-background": "#dae2fd",
+                    "surface-container-lowest": "#060e20",
+                    "background": "#0b1326",
+                    "surface-container": "#171f33",
+                    "primary": "#c0c1ff",
+                    "secondary-fixed": "#acedff",
+                    "outline-variant": "#464554",
+                    "outline": "#908fa0",
+                    "on-secondary-fixed": "#001f26",
+                    "surface-container-high": "#222a3d",
+                    "inverse-surface": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px",
+                    "unit": "4px",
+                    "section-gap": "120px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"],
+                    "code-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(45, 52, 73, 0.5);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card:hover {
+            border-color: rgba(76, 215, 246, 0.3);
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Reveal Animation Styles */
+        .reveal-card {
+            opacity: 0;
+            transform: translateY(2rem);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-card {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+
+        /* Light mode colors */
+        html:not(.dark) {
+            color-scheme: light;
+        }
+        
+        html:not(.dark) body {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        html:not(.dark) header {
+            background-color: rgba(255, 255, 255, 0.7) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 {
+            color: #1a1a1a;
+        }
+
+        html:not(.dark) .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(76, 215, 246, 0.2) !important;
+        }
+
+        html:not(.dark) .glass-card:hover {
+            border-color: rgba(76, 215, 246, 0.5) !important;
+        }
+
+        html:not(.dark) footer {
+            background-color: #f0f0f0 !important;
+            border-color: #e0e0e0 !important;
+        }
+
+        html:not(.dark) .text-on-surface {
+            color: #1a1a1a !important;
+        }
+
+        html:not(.dark) .text-on-surface-variant {
+            color: #666 !important;
+        }
+
+        html:not(.dark) button {
+            color: #1a1a1a !important;
+        }
+
+        html:not(.dark) .text-primary {
+            color: #333 !important;
+        }
+
+        html:not(.dark) .text-secondary {
+            color: #0088cc !important;
+        }
+
+        html:not(.dark) .bg-surface/50 {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        html:not(.dark) .border-white/10 {
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        html:not(.dark) .bg-secondary/10 {
+            background-color: rgba(0, 136, 204, 0.1) !important;
+        }
+
+        html:not(.dark) .bg-surface-container-high {
+            background-color: #e8e8e8 !important;
+        }
+
+        html:not(.dark) .border-secondary {
+            border-color: #0088cc !important;
+        }
+
+        html:not(.dark) .border-outline-variant {
+            border-color: #ccc !important;
+        }
+
+        html:not(.dark) .bg-secondary/20 {
+            background-color: rgba(0, 136, 204, 0.2) !important;
+        }
+
+        /* Smooth transition for theme switching */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<a href="index.html" class="flex items-center gap-3 cursor-pointer active:scale-95 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary text-headline-md">terminal</span>
+<h1 class="font-display text-headline-md font-extrabold text-primary tracking-tighter">UmerDevHub</h1>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="index.html">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="about.html">About</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="services.html">Services</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 transition-colors duration-200" href="projects.html">Projects</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="contact.html">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary cursor-pointer active:scale-95" data-icon="dark_mode">dark_mode</button>
+<button class="md:hidden material-symbols-outlined text-primary">menu</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="mb-section-gap">
+<div class="flex flex-col items-center text-center">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4">Portfolio</span>
+<h2 class="font-display text-headline-lg-mobile md:text-display text-primary mb-8">My Work</h2>
+<p class="max-w-2xl font-body-lg text-body-lg text-on-surface-variant">
+                Explore a curated selection of engineering projects, ranging from mobile ecosystems to predictive machine learning models.
+            </p>
+</div>
+</section>
+<!-- Filter Bar -->
+<section class="mb-12">
+<div class="flex flex-wrap justify-center gap-4">
+<button class="px-6 py-2 rounded-full border-1.5 border-secondary text-secondary bg-secondary/10 font-label-md text-label-md hover:bg-secondary/20 transition-all cursor-pointer active:scale-95" onclick="filterProjects('All')">All</button>
+<button class="px-6 py-2 rounded-full border-1.5 border-outline-variant text-on-surface-variant font-label-md text-label-md hover:border-secondary hover:text-secondary transition-all cursor-pointer active:scale-95" onclick="filterProjects('Flutter')">Flutter</button>
+<button class="px-6 py-2 rounded-full border-1.5 border-outline-variant text-on-surface-variant font-label-md text-label-md hover:border-secondary hover:text-secondary transition-all cursor-pointer active:scale-95" onclick="filterProjects('Web')">Web</button>
+<button class="px-6 py-2 rounded-full border-1.5 border-outline-variant text-on-surface-variant font-label-md text-label-md hover:border-secondary hover:text-secondary transition-all cursor-pointer active:scale-95" onclick="filterProjects('ML')">ML</button>
+<button class="px-6 py-2 rounded-full border-1.5 border-outline-variant text-on-surface-variant font-label-md text-label-md hover:border-secondary hover:text-secondary transition-all cursor-pointer active:scale-95" onclick="filterProjects('Backend')">Backend</button>
+</div>
+</section>
+<!-- Projects Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+<!-- Project 1 -->
+<div class="glass-card reveal-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300" data-category="Flutter">
+<div class="h-56 overflow-hidden relative">
+<img alt="Pocket Journal UI" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A clean, minimalist mobile application interface for a digital journal shown on a sleek smartphone screen." src="assets/images/pocket-journal.jpg"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">Flutter</span>
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">SQLite</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Pocket Journal</h3>
+<p class="text-on-surface-variant mb-6 flex-grow">A secure, offline-first personal diary app built with Flutter and local persistence. Available on Google Play Store.</p>
+<div style="display: flex; flex-direction: row; width: 100%; gap: 0.75rem;">
+<button class="flex-1 py-3 rounded-lg border-1.5 border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://github.com/UmerDevHub/pocket-journal-app', '_blank')">
+                    GitHub
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+</button>
+<button class="flex-1 py-3 rounded-lg border-1.5 border-tertiary text-tertiary font-label-md text-label-md hover:bg-tertiary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://play.google.com/store/apps/details?id=com.umer.pocket_journal', '_blank')">
+                    Play Store
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="glass-card reveal-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300" data-category="Backend">
+<div class="h-56 overflow-hidden relative">
+<img alt="Carpool App Interface" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A high-tech digital map interface showing real-time GPS tracking and vehicle routes within a vibrant city grid." src="assets/images/carpool-app.jpg"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">Firebase</span>
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">Google Maps</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Carpool App</h3>
+<p class="text-on-surface-variant mb-6 flex-grow">Real-time ride-sharing platform with complex geo-spatial queries and live tracking.</p>
+<button class="w-full py-3 rounded-lg border-1.5 border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://github.com/UmerDevHub/Carpool', '_blank')">
+                    View on GitHub
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="glass-card reveal-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300" data-category="ML">
+<div class="h-56 overflow-hidden relative">
+<img alt="Data Analytics Dashboard" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A sophisticated data visualization dashboard showing medical heartbeat patterns and probability heatmaps." src="assets/images/heart-predictor.jpg"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">ML</span>
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">Random Forest</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Heart Disease Predictor</h3>
+<p class="text-on-surface-variant mb-6 flex-grow">Predictive analysis model with 96.6% accuracy using Random Forest. Live Streamlit demo available.</p>
+<div style="display: flex; flex-direction: row; width: 100%; gap: 0.75rem;">
+<button class="flex-1 py-3 rounded-lg border-1.5 border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://github.com/UmerDevHub/heart-disease-predictor', '_blank')">
+                    GitHub
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+</button>
+<button class="flex-1 py-3 rounded-lg border-1.5 border-tertiary text-tertiary font-label-md text-label-md hover:bg-tertiary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://heart-disease-predictor.streamlit.app', '_blank')">
+                    Live Demo
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 5 -->
+<div class="glass-card reveal-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300" data-category="Web Backend">
+<div class="h-56 overflow-hidden relative">
+<img alt="NLP Analysis Visual" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A conceptual 3D representation of natural language processing where streams of glowing code and text fragments are being filtered through a geometric prism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJRbvW9iW5SFbTPX2uUk66SRCVDzIHhmuvKZC6KRacSfLu3PDv7dNO1J6MqrEzNeaDEZ7oa4o1TSj2KLLBu2ot5RN9dPNR_K7ndwqkffgPG0pger7vIIVYPux0R-K_jKiMLMybdb50PKpX9hJg8V3BLycR2diEd6DjehIhS_hxvPxd3ezZ0nKmEDTWShWFYfJnZ58wfFCawtLKa_NsqU8MefLRZqHgXJ_X06sdJFWNVF_nD6JEJjYmZy3ojNGP2owyAj75pl6ISg"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">NLP</span>
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">Python</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Fake News Predictor</h3>
+<p class="text-on-surface-variant mb-6 flex-grow">NLP-based classifier with TF-IDF and 3 ML models. Live Streamlit dashboard for testing.</p>
+<div style="display: flex; flex-direction: row; width: 100%; gap: 0.75rem;">
+<button class="flex-1 py-3 rounded-lg border-1.5 border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://github.com/UmerDevHub/Fake-news-predictor', '_blank')">
+                    GitHub
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+</button>
+<button class="flex-1 py-3 rounded-lg border-1.5 border-tertiary text-tertiary font-label-md text-label-md hover:bg-tertiary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://fake-news-predictor.streamlit.app', '_blank')">
+                    Live Demo
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="glass-card reveal-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300" data-category="ML">
+<div class="h-56 overflow-hidden relative">
+<img alt="Luxury Watch E-commerce" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A premium close-up of a high-end luxury mechanical watch with intricate internal gears visible." src="assets/images/watchify-store.jpg"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">Laravel</span>
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">MySQL</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Watchify Store</h3>
+<p class="text-on-surface-variant mb-6 flex-grow">Full-featured Laravel e-commerce with product management and admin dashboard. Deployed on Railway.</p>
+<div style="display: flex; flex-direction: row; width: 100%; gap: 0.75rem;">
+<button class="flex-1 py-3 rounded-lg border-1.5 border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://github.com/UmerDevHub/watch-ecommerce-website', '_blank')">
+                    GitHub
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+</button>
+<button class="flex-1 py-3 rounded-lg border-1.5 border-tertiary text-tertiary font-label-md text-label-md hover:bg-tertiary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://watchify-store.railway.app', '_blank')">
+                    Live Store
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 6 -->
+<div class="glass-card reveal-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300" data-category="Web">
+<div class="h-56 overflow-hidden relative">
+<img alt="Weather Dashboard UI" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A beautiful glassmorphism-styled weather application interface with translucent panels over a blurred background." src="assets/images/weather-app.jpg"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">JS</span>
+<span class="font-label-md text-code-sm bg-surface-container-high px-3 py-1 rounded text-secondary">Glassmorphism</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Weather App</h3>
+<p class="text-on-surface-variant mb-6 flex-grow">Real-time weather with OpenWeatherMap API, geolocation, and premium glassmorphism UI design.</p>
+<div style="display: flex; flex-direction: row; width: 100%; gap: 0.75rem;">
+<button class="flex-1 py-3 rounded-lg border-1.5 border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://github.com/UmerDevHub/Weather-Frontend', '_blank')">
+                    GitHub
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+</button>
+<button class="flex-1 py-3 rounded-lg border-1.5 border-tertiary text-tertiary font-label-md text-label-md hover:bg-tertiary/10 transition-all flex items-center justify-center gap-2 group/btn" onclick="window.open('https://umer-weather-app.vercel.app', '_blank')">
+                    Live App
+                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 mt-section-gap max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start mb-8 md:mb-0">
+<div class="font-display text-body-lg font-bold text-primary mb-4">UmerDevHub</div>
+<p class="font-label-md text-label-md text-on-surface-variant text-center md:text-left">© 2024 UmerDevHub. Engineered for Performance.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://github.com/UmerDevHub" target="_blank">GitHub</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://linkedin.com/in/umer-dev" target="_blank">LinkedIn</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="mailto:contact@umerdevhub.com">Email</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<script>
+    // Reveal Intersection Observer Setup
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Optional: Unobserve after revealing once
+                // revealObserver.unobserve(entry.target);
+            } else {
+                // If we want them to re-animate when scrolling back, keep them observed
+                // and optionally remove class. Keeping it simple: reveal once or on scroll back.
+                entry.target.classList.remove('is-visible');
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Initialize observer for project cards
+    function initReveal() {
+        document.querySelectorAll('.reveal-card').forEach(card => {
+            revealObserver.observe(card);
+        });
+    }
+
+    function filterProjects(category) {
+        const projects = document.querySelectorAll('[data-category]');
+        const buttons = document.querySelectorAll('button[onclick^="filterProjects"]');
+        
+        // Update active button state
+        buttons.forEach(btn => {
+            if (btn.innerText === category) {
+                btn.classList.add('border-secondary', 'text-secondary', 'bg-secondary/10');
+                btn.classList.remove('border-outline-variant', 'text-on-surface-variant');
+            } else {
+                btn.classList.remove('border-secondary', 'text-secondary', 'bg-secondary/10');
+                btn.classList.add('border-outline-variant', 'text-on-surface-variant');
+            }
+        });
+
+        // Filter logic with animation
+        projects.forEach(project => {
+            const categories = project.getAttribute('data-category');
+            if (category === 'All' || categories.includes(category)) {
+                project.style.display = 'flex';
+                // Reset reveal state to ensure re-triggering animation when re-displayed
+                project.classList.remove('is-visible');
+                // Small delay to allow display change to take effect before animating opacity/transform
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        // Re-trigger observer check or manually add class if already in viewport
+                        revealObserver.observe(project);
+                    }, 50);
+                });
+            } else {
+                project.classList.remove('is-visible');
+                setTimeout(() => { 
+                    project.style.display = 'none'; 
+                    revealObserver.unobserve(project);
+                }, 300);
+            }
+        });
+    }
+
+    // Run on initial load
+    document.addEventListener('DOMContentLoaded', () => {
+        initReveal();
+    });
+
+    // Dark/Light Mode Toggle
+    const themeToggle = document.querySelector('[data-icon="dark_mode"]');
+    
+    if(themeToggle) {
+        // Load theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        const htmlElement = document.documentElement;
+        
+        if(savedTheme === 'light') {
+            htmlElement.classList.remove('dark');
+            themeToggle.textContent = 'light_mode';
+            themeToggle.setAttribute('data-icon', 'light_mode');
+        } else {
+            htmlElement.classList.add('dark');
+            themeToggle.textContent = 'dark_mode';
+            themeToggle.setAttribute('data-icon', 'dark_mode');
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const isDark = htmlElement.classList.contains('dark');
+            
+            if(isDark) {
+                htmlElement.classList.remove('dark');
+                themeToggle.textContent = 'light_mode';
+                themeToggle.setAttribute('data-icon', 'light_mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                themeToggle.textContent = 'dark_mode';
+                themeToggle.setAttribute('data-icon', 'dark_mode');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
+</script>
+</body></html>

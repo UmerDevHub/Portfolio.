@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0f1f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#131b2e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Base background -->
+  <rect width="1200" height="900" fill="url(#mapGradient)"/>
+  
+  <!-- Grid lines (light) -->
+  <g stroke="#4cd7f6" stroke-width="0.5" opacity="0.1">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="0" y1="700" x2="1200" y2="700"/>
+    <line x1="0" y1="800" x2="1200" y2="800"/>
+    <line x1="100" y1="0" x2="100" y2="900"/>
+    <line x1="200" y1="0" x2="200" y2="900"/>
+    <line x1="300" y1="0" x2="300" y2="900"/>
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="500" y1="0" x2="500" y2="900"/>
+    <line x1="600" y1="0" x2="600" y2="900"/>
+    <line x1="700" y1="0" x2="700" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="900" y1="0" x2="900" y2="900"/>
+    <line x1="1000" y1="0" x2="1000" y2="900"/>
+    <line x1="1100" y1="0" x2="1100" y2="900"/>
+  </g>
+  
+  <!-- City blocks and streets (cyan neon lines) -->
+  <g stroke="#4cd7f6" stroke-width="2" opacity="0.6" fill="none">
+    <!-- Main highways -->
+    <path d="M 100 200 L 1100 200" stroke-width="3"/>
+    <path d="M 100 400 L 1100 400" stroke-width="3"/>
+    <path d="M 100 600 L 1100 600" stroke-width="3"/>
+    <path d="M 100 750 L 1100 750" stroke-width="3"/>
+    
+    <!-- Vertical streets -->
+    <path d="M 200 100 L 200 800" stroke-width="3"/>
+    <path d="M 400 100 L 400 800" stroke-width="3"/>
+    <path d="M 600 100 L 600 800" stroke-width="3"/>
+    <path d="M 800 100 L 800 800" stroke-width="3"/>
+    <path d="M 1000 100 L 1000 800" stroke-width="3"/>
+    
+    <!-- Curved roads -->
+    <path d="M 300 100 Q 350 400 300 800" stroke-width="2"/>
+    <path d="M 900 100 Q 850 400 900 800" stroke-width="2"/>
+    <path d="M 100 500 Q 400 550 700 500 T 1100 500" stroke-width="2"/>
+  </g>
+  
+  <!-- Districts/Zones (filled areas) -->
+  <g opacity="0.2" fill="#4cd7f6">
+    <rect x="100" y="100" width="200" height="200" rx="10"/>
+    <rect x="350" y="150" width="180" height="180" rx="10"/>
+    <rect x="600" y="120" width="200" height="220" rx="10"/>
+    <rect x="850" y="100" width="200" height="200" rx="10"/>
+  </g>
+  
+  <!-- Data points / Landmarks (glowing dots) -->
+  <g filter="url(#glow)">
+    <!-- Central location marker (Rawalpindi center) -->
+    <circle cx="600" cy="450" r="12" fill="#4cd7f6" opacity="0.8"/>
+    <circle cx="600" cy="450" r="20" fill="none" stroke="#4cd7f6" stroke-width="2" opacity="0.5"/>
+    <circle cx="600" cy="450" r="30" fill="none" stroke="#4cd7f6" stroke-width="1" opacity="0.3" stroke-dasharray="5,5"/>
+    
+    <!-- Other landmarks -->
+    <circle cx="250" cy="300" r="8" fill="#ffb2b7" opacity="0.7"/>
+    <circle cx="950" cy="280" r="8" fill="#ffb2b7" opacity="0.7"/>
+    <circle cx="150" cy="650" r="8" fill="#ffb2b7" opacity="0.7"/>
+    <circle cx="1050" cy="700" r="8" fill="#ffb2b7" opacity="0.7"/>
+    <circle cx="450" cy="550" r="8" fill="#ffb2b7" opacity="0.7"/>
+    <circle cx="750" cy="600" r="8" fill="#ffb2b7" opacity="0.7"/>
+  </g>
+  
+  <!-- Connection lines from main point -->
+  <g stroke="#4cd7f6" stroke-width="1" opacity="0.3" stroke-dasharray="3,3">
+    <line x1="600" y1="450" x2="250" y2="300"/>
+    <line x1="600" y1="450" x2="950" y2="280"/>
+    <line x1="600" y1="450" x2="150" y2="650"/>
+    <line x1="600" y1="450" x2="1050" y2="700"/>
+  </g>
+  
+  <!-- Location pin icon at center -->
+  <g transform="translate(600, 450)">
+    <path d="M 0 -25 C -13 -25 -24 -14 -24 0 C -24 15 0 35 0 35 C 0 35 24 15 24 0 C 24 -14 13 -25 0 -25" 
+          fill="#4cd7f6" opacity="0.9" stroke="#ffffff" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="6" fill="#0b1326"/>
+  </g>
+  
+  <!-- Text labels -->
+  <g fill="#4cd7f6" opacity="0.8" font-family="Arial, sans-serif" font-size="18" font-weight="bold">
+    <text x="600" y="380" text-anchor="middle" fill="#ffffff" font-size="24">RAWALPINDI</text>
+    <text x="600" y="410" text-anchor="middle" fill="#4cd7f6" font-size="14" letter-spacing="2">PAKISTAN</text>
+  </g>
+  
+  <!-- Decorative corner elements -->
+  <g stroke="#4cd7f6" stroke-width="2" opacity="0.4" fill="none">
+    <rect x="50" y="50" width="40" height="40"/>
+    <rect x="1110" y="50" width="40" height="40"/>
+    <rect x="50" y="810" width="40" height="40"/>
+    <rect x="1110" y="810" width="40" height="40"/>
+  </g>
+  
+  <!-- Pulse animation background -->
+  <defs>
+    <style>
+      @keyframes pulse {
+        0% { r: 20; opacity: 0.5; }
+        50% { r: 30; opacity: 0.2; }
+        100% { r: 40; opacity: 0; }
+      }
+      .pulse-ring { animation: pulse 2s infinite; }
+    </style>
+  </defs>
+  
+  <!-- Subtle data visualization bars -->
+  <g opacity="0.3">
+    <rect x="150" y="750" width="30" height="80" fill="#4cd7f6"/>
+    <rect x="200" y="760" width="30" height="70" fill="#4cd7f6"/>
+    <rect x="250" y="740" width="30" height="90" fill="#4cd7f6"/>
+    <rect x="300" y="755" width="30" height="75" fill="#4cd7f6"/>
+    <rect x="350" y="750" width="30" height="80" fill="#4cd7f6"/>
+    
+    <rect x="900" y="750" width="30" height="85" fill="#ffb2b7"/>
+    <rect x="950" y="760" width="30" height="70" fill="#ffb2b7"/>
+    <rect x="1000" y="745" width="30" height="85" fill="#ffb2b7"/>
+    <rect x="1050" y="750" width="30" height="80" fill="#ffb2b7"/>
+  </g>
+  
+  <!-- Overlay gradient (bottom) -->
+  <defs>
+    <linearGradient id="overlayGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#overlayGradient)"/>
+</svg>
