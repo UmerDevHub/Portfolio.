@@ -328,7 +328,7 @@
             </li>
           </ul>
         </div>
-        <button class="mt-8 font-label-md text-label-md text-secondary border border-secondary/30 py-3 px-6 rounded-lg hover:bg-secondary/10 transition-colors uppercase tracking-widest text-center">View Projects</button>
+        <button class="mt-8 font-label-md text-label-md text-secondary border border-secondary/30 py-3 px-6 rounded-lg hover:bg-secondary/10 transition-colors uppercase tracking-widest text-center" onclick="window.location.href='projects.html'">View Projects</button>
       </div>
 
       <div class="reveal md:col-span-5 glass-card p-8 rounded-xl flex flex-col justify-between min-h-[400px]">
@@ -442,10 +442,10 @@
           Whether it's a mobile app or a data-driven enterprise solution, I'm ready to help you engineer the next big thing.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <button class="bg-primary hover:bg-primary/90 text-on-primary font-label-md text-label-md px-10 py-4 rounded-lg transition-all active:scale-95 shadow-[0_0_20px_rgba(192,193,255,0.2)]">
+          <button class="bg-primary hover:bg-primary/90 text-on-primary font-label-md text-label-md px-10 py-4 rounded-lg transition-all active:scale-95 shadow-[0_0_20px_rgba(192,193,255,0.2)]" onclick="window.location.href='contact.html'">
             HIRE ME NOW
           </button>
-          <button class="border border-secondary hover:bg-secondary/10 text-secondary font-label-md text-label-md px-10 py-4 rounded-lg transition-all active:scale-95">
+          <button class="border border-secondary hover:bg-secondary/10 text-secondary font-label-md text-label-md px-10 py-4 rounded-lg transition-all active:scale-95" onclick="downloadResume()">
             DOWNLOAD CV
           </button>
         </div>
@@ -463,13 +463,12 @@
   <div class="flex flex-col md:flex-row justify-between items-center px-4 md:px-margin-desktop py-12 mt-section-gap max-w-container-max mx-auto">
     <div class="flex flex-col gap-4 mb-8 md:mb-0">
       <div class="font-display text-body-lg font-bold text-primary">UmerDevHub</div>
-      <p class="font-label-md text-label-md text-on-surface-variant">© 2024 UmerDevHub. Engineered for Performance.</p>
+      <p class="font-label-md text-label-md text-on-surface-variant">© 2026 UmerDevHub. Engineered for Performance.</p>
     </div>
     <div class="flex flex-wrap gap-8 justify-center items-center">
       <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://github.com/UmerDevHub" target="_blank">GitHub</a>
-      <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://linkedin.com/in/umer-dev" target="_blank">LinkedIn</a>
-      <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="mailto:contact@umerdevhub.com">Email</a>
-      <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+      <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://www.linkedin.com/in/umer-nisar-699a39352/" target="_blank">LinkedIn</a>
+      <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="mailto:umernisar053@gmail.com">Email</a>
     </div>
   </div>
 </footer>
@@ -569,6 +568,19 @@
             });
         });
     }
+
+    // Download Resume Function
+    function downloadResume() {
+        const link = document.createElement('a');
+        link.href = 'assets/resume/resume.pdf';
+        link.download = 'Umer_Nisar_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Make downloadResume globally available
+    window.downloadResume = downloadResume;
   });
 </script>
 </body>

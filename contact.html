@@ -267,24 +267,24 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
             
             <div class="md:col-span-8 glass-panel p-8 rounded-xl reveal-on-scroll">
-                <form class="space-y-6" id="contactForm">
+                <form class="space-y-6" id="contactForm" method="POST" action="https://formspree.io/f/xbderjjr" enctype="application/x-www-form-urlencoded">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="font-label-md text-secondary" for="name">Name</label>
-                            <input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="name" placeholder="John Doe" required="" type="text"/>
+                            <input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="name" name="name" placeholder="John Doe" required="" type="text"/>
                         </div>
                         <div class="space-y-2">
                             <label class="font-label-md text-secondary" for="email">Email</label>
-                            <input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="email" placeholder="john@example.com" required="" type="email"/>
+                            <input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="email" name="email" placeholder="john@example.com" required="" type="email"/>
                         </div>
                     </div>
                     <div class="space-y-2">
                         <label class="font-label-md text-secondary" for="subject">Subject</label>
-                        <input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="subject" placeholder="Project Inquiry" required="" type="text"/>
+                        <input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all" id="subject" name="subject" placeholder="Project Inquiry" required="" type="text"/>
                     </div>
                     <div class="space-y-2">
                         <label class="font-label-md text-secondary" for="message">Message</label>
-                        <textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all resize-none" id="message" placeholder="How can I help you?" required="" rows="5"></textarea>
+                        <textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 font-body-md text-on-surface focus:border-secondary transition-all resize-none" id="message" name="message" placeholder="How can I help you?" required="" rows="5"></textarea>
                     </div>
                     <button class="w-full md:w-auto px-12 py-4 bg-primary text-on-primary font-bold rounded-lg hover:shadow-[0_0_20px_rgba(192,193,255,0.4)] transition-all active:scale-95 flex items-center justify-center gap-2" type="submit">
                         Send Message
@@ -310,17 +310,17 @@
                             </div>
                             <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
                         </a>
-                        <a class="flex items-center justify-between group p-3 hover:bg-white/5 rounded-lg transition-all" href="#">
+                        <a class="flex items-center justify-between group p-3 hover:bg-white/5 rounded-lg transition-all" href="https://www.linkedin.com/in/umer-nisar-699a39352/" target="_blank">
                             <div class="flex items-center gap-4">
                                 <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="person_add">person_add</span>
                                 <span class="font-body-md">LinkedIn</span>
                             </div>
                             <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
                         </a>
-                        <a class="flex items-center justify-between group p-3 hover:bg-white/5 rounded-lg transition-all" href="#">
+                        <a class="flex items-center justify-between group p-3 hover:bg-white/5 rounded-lg transition-all" href="tel:03065082951">
                             <div class="flex items-center gap-4">
-                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="chat">chat</span>
-                                <span class="font-body-md">Twitter</span>
+                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="phone">phone</span>
+                                <span class="font-body-md">+92 306 5082951</span>
                             </div>
                             <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
                         </a>
@@ -348,13 +348,12 @@
         <div class="flex flex-col md:flex-row justify-between items-center px-4 md:px-margin-desktop py-12 max-w-container-max mx-auto">
             <div class="mb-6 md:mb-0 text-center md:text-left">
                 <span class="font-display text-body-lg font-bold text-primary">UmerDevHub</span>
-                <p class="font-label-md text-on-surface-variant mt-2">© 2024 UmerDevHub. Engineered for Performance.</p>
+                <p class="font-label-md text-on-surface-variant mt-2">© 2026 UmerDevHub. Engineered for Performance.</p>
             </div>
             <div class="flex flex-wrap justify-center gap-8">
                 <a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://github.com/UmerDevHub" target="_blank">GitHub</a>
-                <a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://linkedin.com/in/umer-dev" target="_blank">LinkedIn</a>
-                <a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="mailto:contact@umerdevhub.com">Email</a>
-                <a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+                <a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="https://www.linkedin.com/in/umer-nisar-699a39352/" target="_blank">LinkedIn</a>
+                <a class="font-label-md text-on-surface-variant hover:text-secondary transition-opacity underline-offset-4 hover:underline" href="mailto:umernisar053@gmail.com">Email</a>
             </div>
         </div>
     </footer>
@@ -379,51 +378,44 @@
             const revealElements = document.querySelectorAll('.reveal-on-scroll');
             revealElements.forEach(el => observer.observe(el));
 
-            // Form Submit Logic
+            // Form Submit Logic with Formspree Integration
             document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
                 
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    subject: document.getElementById('subject').value,
-                    message: document.getElementById('message').value
-                };
-                
-                // Validate form
-                if(!formData.name || !formData.email || !formData.subject || !formData.message) {
+                // Validate form fields
+                if(!name || !email || !subject || !message) {
+                    e.preventDefault();
                     alert('Please fill all fields');
                     return;
                 }
                 
                 // Email validation
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if(!emailRegex.test(formData.email)) {
+                if(!emailRegex.test(email)) {
+                    e.preventDefault();
                     alert('Please enter a valid email address');
                     return;
                 }
                 
-                // Save to localStorage for demonstration
-                localStorage.setItem('lastContactForm', JSON.stringify({
-                    ...formData,
-                    timestamp: new Date().toISOString()
-                }));
+                // Allow form to submit to Formspree and show success message
+                const form = this;
+                const successMsg = document.getElementById('successMessage');
                 
-                // Show success message
-                this.classList.add('hidden');
-                document.getElementById('successMessage').classList.remove('hidden');
-                
-                console.log('Form submitted:', formData);
-                
-                // Scroll to success message
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Reset form after 3 seconds
+                // Show success message after form submission
                 setTimeout(() => {
-                    this.classList.remove('hidden');
-                    document.getElementById('successMessage').classList.add('hidden');
-                    this.reset();
-                }, 3000);
+                    form.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    setTimeout(() => {
+                        form.classList.remove('hidden');
+                        successMsg.classList.add('hidden');
+                        form.reset();
+                    }, 3000);
+                }, 500);
             });
 
             // Dark/Light Mode Toggle
@@ -491,10 +483,12 @@
                     });
                 });
             }
+            
 
-            // Social links handler
+            // Social links handler for placeholder links
             document.querySelectorAll('a[href="#"]').forEach(link => {
                 link.addEventListener('click', function(e) {
+                    e.preventDefault();
                     const textContainer = this.querySelector('.font-body-md');
                     if (textContainer) {
                         alert(textContainer.innerText + ' link will be updated soon!');
@@ -504,4 +498,5 @@
         });
     </script>
 </body>
+
 </html>
