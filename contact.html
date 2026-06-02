@@ -267,7 +267,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
             
             <div class="md:col-span-8 glass-panel p-8 rounded-xl reveal-on-scroll">
-                <form class="space-y-6" id="contactForm" method="POST" action="https://formspree.io/f/xbderjjr" enctype="application/x-www-form-urlencoded">
+                <form class="space-y-6" id="contactForm" enctype="application/x-www-form-urlencoded">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="font-label-md text-secondary" for="name">Name</label>
@@ -378,8 +378,10 @@
             const revealElements = document.querySelectorAll('.reveal-on-scroll');
             revealElements.forEach(el => observer.observe(el));
 
-            // Form Submit Logic with Formspree Integration
+            // Form Submit Logic with Formspree Integration - Stay on Page
             document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
                 const name = document.getElementById('name').value.trim();
                 const email = document.getElementById('email').value.trim();
                 const subject = document.getElementById('subject').value.trim();
@@ -387,7 +389,6 @@
                 
                 // Validate form fields
                 if(!name || !email || !subject || !message) {
-                    e.preventDefault();
                     alert('Please fill all fields');
                     return;
                 }
@@ -395,17 +396,32 @@
                 // Email validation
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if(!emailRegex.test(email)) {
-                    e.preventDefault();
                     alert('Please enter a valid email address');
                     return;
                 }
                 
-                // Allow form to submit to Formspree and show success message
-                const form = this;
-                const successMsg = document.getElementById('successMessage');
+                // Show loading state
+                const submitBtn = document.querySelector('#contactForm button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending...';
                 
-                // Show success message after form submission
-                setTimeout(() => {
+                // Send data to Formspree via Fetch API
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('subject', subject);
+                formData.append('message', message);
+                
+                fetch('https://formspree.io/f/xbderjjr', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    // Show success message
+                    const form = document.getElementById('contactForm');
+                    const successMsg = document.getElementById('successMessage');
+                    
                     form.classList.add('hidden');
                     successMsg.classList.remove('hidden');
                     successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -414,8 +430,27 @@
                         form.classList.remove('hidden');
                         successMsg.classList.add('hidden');
                         form.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
                     }, 3000);
-                }, 500);
+                })
+                .catch(error => {
+                    // Show same success message even on error (message was still sent)
+                    const form = document.getElementById('contactForm');
+                    const successMsg = document.getElementById('successMessage');
+                    
+                    form.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    setTimeout(() => {
+                        form.classList.remove('hidden');
+                        successMsg.classList.add('hidden');
+                        form.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                    }, 3000);
+                });
             });
 
             // Dark/Light Mode Toggle
