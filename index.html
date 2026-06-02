@@ -121,6 +121,12 @@
             border-color: rgba(0, 0, 0, 0.1) !important;
         }
 
+        /* Mobile menu light mode */
+        html:not(.dark) #mobile-menu {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
         html:not(.dark) nav a {
             color: #666 !important;
         }
@@ -240,7 +246,6 @@
     </style>
 </head>
 <body class="font-body-md overflow-x-hidden">
-    <!-- TopAppBar -->
     <header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50">
         <div class="flex justify-between items-center px-4 md:px-margin-desktop py-4 max-w-container-max mx-auto">
             <a href="index.html" class="flex items-center gap-3 cursor-pointer active:scale-95 hover:opacity-80 transition-opacity">
@@ -256,13 +261,20 @@
             </nav>
             <div class="flex items-center gap-4">
                 <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors duration-200" data-icon="dark_mode">dark_mode</span>
-                <button class="md:hidden material-symbols-outlined text-on-surface-variant" data-icon="menu" id="mobile-menu-btn">menu</button>
+                <button class="md:hidden material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors duration-200" data-icon="menu" id="mobile-menu-btn">menu</button>
             </div>
         </div>
+        
+        <nav id="mobile-menu" class="hidden flex-col items-center py-6 bg-surface/95 backdrop-blur-xl border-b border-white/10 md:hidden transition-all duration-300">
+            <a class="py-3 text-secondary font-bold text-lg w-full text-center" href="index.html">Home</a>
+            <a class="py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="about.html">About</a>
+            <a class="py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="services.html">Services</a>
+            <a class="py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="projects.html">Projects</a>
+            <a class="py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="contact.html">Contact</a>
+        </nav>
     </header>
 
     <main class="pt-24">
-        <!-- Hero Section -->
         <section class="relative min-h-[707px] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop hero-gradient">
             <div class="space-y-6 max-w-4xl reveal w-full">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant mb-4">
@@ -270,39 +282,31 @@
                     <span class="font-label-md text-label-md text-secondary">Software Engineering Student</span>
                 </div>
                 
-                <!-- Main Big Heading -->
                 <h1 class="font-display text-headline-lg-mobile md:text-display text-on-surface leading-none mb-2">
                     Hi, I'm <span class="text-primary">Umer</span>
                 </h1>
                 
-                <!-- Big Typewriter Effect -->
                 <h2 class="font-display text-3xl md:text-5xl text-on-surface-variant h-12 md:h-16 mb-6">
                     A <span id="rotating-text" class="rotating-text"></span>
                 </h2>
 
-                <!-- Premium Professional Text -->
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto mb-8">
                     Transforming complex problems into elegant, high-performance software. I engineer scalable web platforms, engaging mobile applications, and smart machine learning solutions that drive real-world value.
                 </p>
 
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4 pt-4">
-                    <button class="px-8 py-4 bg-primary text-on-primary font-bold rounded-xl hover:shadow-[0_0_20px_rgba(192,193,255,0.4)] transition-all duration-300 active:scale-95">
-                        View Projects
-                    </button>
-                    <button class="px-8 py-4 border-2 border-secondary text-secondary font-bold rounded-xl hover:bg-secondary/10 transition-all duration-300 active:scale-95">
+                <div class="flex flex-row flex-wrap items-center justify-center gap-3 md:gap-4 pt-4">
+                    <button class="px-5 py-3 md:px-8 md:py-4 text-sm md:text-base border-2 border-secondary text-secondary font-bold rounded-xl hover:bg-secondary/10 transition-all duration-300 active:scale-95">
                         Contact Me
                     </button>
-                    <button class="px-8 py-4 border-2 border-tertiary text-tertiary font-bold rounded-xl hover:bg-tertiary/10 transition-all duration-300 active:scale-95 flex items-center gap-2" id="download-resume-btn">
-                        <span class="material-symbols-outlined">download</span>
+                    <button class="px-5 py-3 md:px-8 md:py-4 text-sm md:text-base border-2 border-tertiary text-tertiary font-bold rounded-xl hover:bg-tertiary/10 transition-all duration-300 active:scale-95 flex items-center gap-2" id="download-resume-btn">
+                        <span class="material-symbols-outlined text-sm md:text-lg">download</span>
                         Resume
                     </button>
                 </div>
             </div>
-            <!-- Animated Background Element -->
             <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
         </section>
 
-        <!-- Skills Section (Bento Style) -->
         <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4 reveal">
                 <div>
@@ -312,7 +316,6 @@
                 <div class="font-label-md text-label-md text-outline">/ SKILLS / EXPERTISE</div>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <!-- Skill Cards -->
                 <div class="glass-card p-6 rounded-xl flex flex-col items-center gap-4 text-center reveal">
                     <span class="material-symbols-outlined text-4xl text-secondary" data-icon="flutter_dash">flutter_dash</span>
                     <span class="font-label-md text-label-md">Flutter</span>
@@ -340,7 +343,6 @@
             </div>
         </section>
 
-        <!-- Projects Preview -->
         <section class="py-section-gap bg-surface-container-low">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="mb-12 reveal">
@@ -348,7 +350,6 @@
                     <div class="w-24 h-1 bg-primary mt-4"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-                    <!-- Project 1 -->
                     <div class="group relative glass-card rounded-xl overflow-hidden reveal">
                         <div class="h-64 overflow-hidden">
                             <img alt="Pocket Journal App Preview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-quality mobile application UI mockup of a clean, minimalist journaling app called Pocket Journal. The interface is displayed on a sleek, modern smartphone floating in a dark, atmospheric studio setting. Soft indigo and cyan neon lights highlight the edges of the device, creating a premium developer portfolio aesthetic. The screen shows elegant typography and organized list views, suggesting high-performance Flutter engineering." src="assets/images/pocket-journal.jpg"/>
@@ -368,7 +369,6 @@
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
                     <div class="group relative glass-card rounded-xl overflow-hidden reveal">
                         <div class="h-64 overflow-hidden">
                             <img alt="Carpool App Interface" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A sophisticated carpool application interface design featuring a dark-themed map with vibrant neon route lines. The UI displays professional-grade user profiles and real-time ride tracking modules. The scene is rendered in a 3D isometric perspective with high-end glassmorphism effects, reflecting a modern corporate technology brand. The color palette is dominated by deep slates and electric cyans, communicating efficiency and reliability." src="assets/images/carpool-app.jpg"/>
@@ -391,7 +391,6 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
         <section class="py-section-gap px-margin-mobile md:px-margin-desktop text-center">
             <div class="max-w-3xl mx-auto glass-card p-12 rounded-2xl border-dashed reveal">
                 <h2 class="font-display text-headline-lg text-on-surface mb-6">Ready to Build Something Incredible?</h2>
@@ -404,7 +403,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-surface-container-lowest border-t border-outline-variant reveal">
         <div class="flex flex-col md:flex-row justify-between items-center px-4 md:px-margin-desktop py-12 mt-0 max-w-container-max mx-auto">
             <div class="mb-8 md:mb-0">
@@ -442,11 +440,23 @@
             revealObserver.observe(el);
         });
 
-        // Mobile menu logic
+        // Mobile menu functional logic
         const menuBtn = document.getElementById('mobile-menu-btn');
-        if(menuBtn) {
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if(menuBtn && mobileMenu) {
             menuBtn.addEventListener('click', () => {
-                alert('Mobile navigation is under construction. Explore the desktop view for full experience!');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                
+                // Switch icon between menu and close
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuBtn.textContent = 'menu';
+                    menuBtn.setAttribute('data-icon', 'menu');
+                } else {
+                    menuBtn.textContent = 'close';
+                    menuBtn.setAttribute('data-icon', 'close');
+                }
             });
         }
 
@@ -537,11 +547,6 @@
         document.querySelectorAll('button').forEach(button => {
             const buttonText = button.textContent.trim();
             
-            if(buttonText.includes('View Projects')) {
-                button.addEventListener('click', () => {
-                    window.location.href = 'projects.html';
-                });
-            }
             if(buttonText.includes('Contact Me')) {
                 button.addEventListener('click', () => {
                     window.location.href = 'contact.html';
