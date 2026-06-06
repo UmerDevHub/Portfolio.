@@ -8,12 +8,54 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
-    body {
-      background-color: #0b1326;
-      color: #dae2fd;
-      -webkit-font-smoothing: antialiased;
-      min-height: max(884px, 100dvh);
+
+    :root {
+      --background: #f8fafc;
+      --on-background: #0f172a;
+      --surface: #ffffff;
+      --on-surface: #0f172a;
+      --on-surface-variant: #64748b;
+      --surface-container-lowest: #ffffff;
+      --surface-container-low: #f1f5f9;
+      --surface-container: #e2e8f0;
+      --surface-container-high: #cbd5e1;
+      --surface-container-highest: #e2e8f0;
+      --outline: #94a3b8;
+      --outline-variant: #cbd5e1;
+      --primary: #4f46e5;
+      --on-primary: #ffffff;
+      --primary-container: #e0e7ff;
+      --secondary: #0284c7;
+      --on-secondary: #ffffff;
+      --secondary-container: #e0f2fe;
+      --tertiary: #0f766e;
+      --tertiary-container: #ccfbf1;
     }
+    
+    html.dark {
+      --background: #0f172a;
+      --on-background: #f8fafc;
+      --surface: #1e293b;
+      --on-surface: #f8fafc;
+      --on-surface-variant: #94a3b8;
+      --surface-container-lowest: #020617;
+      --surface-container-low: #0f172a;
+      --surface-container: #1e293b;
+      --surface-container-high: #334155;
+      --surface-container-highest: #475569;
+      --outline: #64748b;
+      --outline-variant: #334155;
+      --primary: #818cf8;
+      --on-primary: #ffffff;
+      --primary-container: #3730a3;
+      --secondary: #38bdf8;
+      --on-secondary: #0f172a;
+      --secondary-container: #0369a1;
+      --tertiary: #2dd4bf;
+      --tertiary-container: #115e59;
+    }
+
+    body { min-height: max(884px, 100dvh); -webkit-font-smoothing: antialiased; }
 
     /* Fix for computer window buttons overlapping the header */
     .safe-header {
@@ -23,8 +65,7 @@
     }
 
     .glass-card {
-      background: rgba(30, 41, 59, 0.5);
-      backdrop-filter: blur(12px);
+      background: var(--surface-container); backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -67,105 +108,50 @@
     }
 
     /* Light mode colors */
-    html:not(.dark) {
-      color-scheme: light;
-    }
     
-    html:not(.dark) body {
-      background-color: #f5f5f5;
-      color: #1a1a1a;
-    }
+    
+    
 
-    html:not(.dark) header {
-      background-color: rgba(255, 255, 255, 0.7) !important;
-      border-color: rgba(0, 0, 0, 0.1) !important;
-    }
+    
 
     /* Mobile menu light mode */
-    html:not(.dark) #mobile-menu {
-      background-color: rgba(255, 255, 255, 0.95);
-      border-color: rgba(0, 0, 0, 0.1);
-    }
+    
 
-    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 {
-      color: #1a1a1a;
-    }
+    
 
-    html:not(.dark) .glass-card {
-      background: rgba(255, 255, 255, 0.7);
-      border-color: rgba(76, 215, 246, 0.2) !important;
-    }
+    
 
-    html:not(.dark) .glass-card:hover {
-      border-color: rgba(76, 215, 246, 0.5) !important;
-    }
+    
 
-    html:not(.dark) footer {
-      background-color: #f0f0f0 !important;
-      border-color: #e0e0e0 !important;
-    }
+    
 
-    html:not(.dark) .text-on-surface {
-      color: #1a1a1a !important;
-    }
+    
 
-    html:not(.dark) .text-on-surface-variant {
-      color: #666 !important;
-    }
+    
 
-    html:not(.dark) .text-gradient-cyan-indigo {
-      background: linear-gradient(to right, #333, #4cd7f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    
 
-    html:not(.dark) .reveal {
-      opacity: 1;
-      transform: none;
-    }
+    
 
-    html:not(.dark) .bg-surface-container-low {
-      background-color: #f0f0f0 !important;
-    }
+    
 
-    html:not(.dark) .bg-surface-container-highest {
-      background-color: #e8e8e8 !important;
-    }
+    
 
-    html:not(.dark) .border-outline-variant {
-      border-color: #ccc !important;
-    }
+    
 
-    html:not(.dark) h4 {
-      color: #1a1a1a !important;
-    }
+    
 
-    html:not(.dark) button {
-      transition: all 0.3s ease;
-    }
+    
 
-    html:not(.dark) .bg-primary {
-      background-color: #0088cc !important;
-      color: #fff !important;
-    }
+    
 
-    html:not(.dark) .bg-primary:hover {
-      background-color: #006399 !important;
-    }
+    
 
-    html:not(.dark) .bg-secondary {
-      background-color: #0088cc !important;
-      color: #fff !important;
-    }
+    
 
-    html:not(.dark) .bg-secondary:hover {
-      background-color: #006399 !important;
-    }
+    
 
-    html:not(.dark) button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+    
 
     /* Smooth transition for theme switching */
     * {
@@ -177,60 +163,37 @@
       darkMode: "class",
       theme: {
         extend: {
+          
           "colors": {
-            "tertiary-fixed-dim": "#ffb2b7",
-            "on-tertiary-container": "#5b0017",
-            "primary-fixed": "#e1e0ff",
-            "on-error-container": "#ffdad6",
-            "inverse-on-surface": "#283044",
-            "surface-bright": "#31394d",
-            "on-surface-variant": "#c7c4d7",
-            "on-secondary-container": "#00424e",
-            "surface-container-low": "#131b2e",
-            "on-secondary-fixed-variant": "#004e5c",
-            "error": "#ffb4ab",
-            "secondary-fixed-dim": "#4cd7f6",
-            "on-tertiary-fixed": "#40000d",
-            "inverse-primary": "#494bd6",
-            "tertiary-container": "#ff516a",
-            "tertiary-fixed": "#ffdadb",
-            "tertiary": "#ffb2b7",
-            "surface-container-highest": "#2d3449",
-            "surface-tint": "#c0c1ff",
-            "on-error": "#690005",
-            "on-tertiary": "#67001b",
-            "secondary-container": "#03b5d3",
-            "secondary": "#4cd7f6",
-            "surface-variant": "#2d3449",
-            "error-container": "#93000a",
-            "on-tertiary-fixed-variant": "#92002a",
-            "on-primary-fixed-variant": "#2f2ebe",
-            "surface": "#0b1326",
-            "on-primary-container": "#0d0096",
-            "on-primary": "#1000a9",
-            "on-primary-fixed": "#07006c",
-            "primary-fixed-dim": "#c0c1ff",
-            "on-surface": "#dae2fd",
-            "on-secondary": "#003640",
-            "surface-dim": "#0b1326",
-            "primary-container": "#8083ff",
-            "on-background": "#dae2fd",
-            "surface-container-lowest": "#060e20",
-            "background": "#0b1326",
-            "surface-container": "#171f33",
-            "primary": "#c0c1ff",
-            "secondary-fixed": "#acedff",
-            "outline-variant": "#464554",
-            "outline": "#908fa0",
-            "on-secondary-fixed": "#001f26",
-            "surface-container-high": "#222a3d",
-            "inverse-surface": "#dae2fd"
+            "background": "var(--background)",
+            "on-background": "var(--on-background)",
+            "surface": "var(--surface)",
+            "on-surface": "var(--on-surface)",
+            "on-surface-variant": "var(--on-surface-variant)",
+            "surface-container-lowest": "var(--surface-container-lowest)",
+            "surface-container-low": "var(--surface-container-low)",
+            "surface-container": "var(--surface-container)",
+            "surface-container-high": "var(--surface-container-high)",
+            "surface-container-highest": "var(--surface-container-highest)",
+            "outline": "var(--outline)",
+            "outline-variant": "var(--outline-variant)",
+            "primary": "var(--primary)",
+            "on-primary": "var(--on-primary)",
+            "primary-container": "var(--primary-container)",
+            "primary-fixed-dim": "var(--primary)",
+            "secondary": "var(--secondary)",
+            "on-secondary": "var(--on-secondary)",
+            "secondary-container": "var(--secondary-container)",
+            "tertiary": "var(--tertiary)",
+            "tertiary-container": "var(--tertiary-container)",
+            "tertiary-fixed-dim": "var(--tertiary)",
+            "inverse-surface": "var(--on-surface)"
           },
           "borderRadius": {
-            "DEFAULT": "0.125rem",
-            "lg": "0.25rem",
-            "xl": "0.5rem",
-            "full": "0.75rem"
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "0px"
           },
           "spacing": {
             "gutter": "24px",
@@ -265,9 +228,9 @@
     }
   </script>
 </head>
-<body class="bg-background font-body-md text-on-background selection:bg-secondary/30 selection:text-secondary overflow-x-hidden">
+<body class="bg-background text-on-background transition-colors duration-300 font-body-md  selection:bg-secondary/30 selection:text-secondary overflow-x-hidden">
 
-<header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-white/10 z-50 safe-header">
+<header class="fixed top-0 w-full bg-surface/50 backdrop-blur-xl border-b border-outline-variant/40 z-50 safe-header">
   <div class="flex justify-between items-center px-4 md:px-margin-desktop py-4 max-w-container-max mx-auto relative">
     <a href="index.html" class="flex items-center gap-3 cursor-pointer active:scale-95 group hover:opacity-80 transition-opacity">
       <span class="material-symbols-outlined text-primary text-headline-md" data-icon="terminal">terminal</span>
@@ -288,7 +251,7 @@
     </div>
   </div>
 
-  <nav id="mobile-menu" class="hidden absolute top-full left-0 w-full flex-col items-center py-6 bg-surface/95 backdrop-blur-xl border-b border-white/10 md:hidden shadow-lg transition-all duration-300">
+  <nav id="mobile-menu" class="hidden absolute top-full left-0 w-full flex-col items-center py-6 bg-surface/95 backdrop-blur-xl border-b border-outline-variant/40 md:hidden shadow-lg transition-all duration-300">
       <a class="mobile-link py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="index.html">Home</a>
       <a class="mobile-link py-3 text-on-surface-variant font-medium hover:text-secondary text-lg w-full text-center" href="about.html">About</a>
       <a class="mobile-link py-3 text-secondary font-bold text-lg w-full text-center" href="services.html">Services</a>
@@ -331,7 +294,7 @@
             <span class="font-label-md text-label-md px-3 py-1 bg-surface-container-highest text-secondary rounded">Cross-platform</span>
           </div>
         </div>
-        <div class="absolute -right-12 -bottom-12 w-64 h-96 bg-gradient-to-br from-primary/10 to-transparent border border-white/5 rounded-3xl transform rotate-12 group-hover:rotate-6 transition-transform duration-500 hidden md:block"></div>
+        <div class="absolute -right-12 -bottom-12 w-64 h-96 bg-gradient-to-br from-primary/10 to-transparent border border-outline-variant/30 rounded-3xl transform rotate-12 group-hover:rotate-6 transition-transform duration-500 hidden md:block"></div>
       </div>
 
       <div class="reveal md:col-span-5 glass-card p-8 rounded-xl flex flex-col justify-between min-h-[400px]">
@@ -398,19 +361,19 @@
           </div>
         </div>
         <div class="flex-1 w-full grid grid-cols-2 gap-4">
-          <div class="bg-surface-container-high p-4 rounded-xl border border-white/5 flex items-center gap-3">
+          <div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/30 flex items-center gap-3">
             <span class="material-symbols-outlined text-on-surface-variant" data-icon="storage">storage</span>
             <span class="font-label-md text-on-surface">MongoDB</span>
           </div>
-          <div class="bg-surface-container-high p-4 rounded-xl border border-white/5 flex items-center gap-3">
+          <div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/30 flex items-center gap-3">
             <span class="material-symbols-outlined text-on-surface-variant" data-icon="local_fire_department">local_fire_department</span>
             <span class="font-label-md text-on-surface">Firebase</span>
           </div>
-          <div class="bg-surface-container-high p-4 rounded-xl border border-white/5 flex items-center gap-3">
+          <div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/30 flex items-center gap-3">
             <span class="material-symbols-outlined text-on-surface-variant" data-icon="api">api</span>
             <span class="font-label-md text-on-surface">Express</span>
           </div>
-          <div class="bg-surface-container-high p-4 rounded-xl border border-white/5 flex items-center gap-3">
+          <div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/30 flex items-center gap-3">
             <span class="material-symbols-outlined text-on-surface-variant" data-icon="security">security</span>
             <span class="font-label-md text-on-surface">OAuth 2.0</span>
           </div>
