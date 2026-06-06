@@ -295,107 +295,56 @@
     </div>
   </section>
 
-    <section class="max-w-container-max mx-auto px-4 md:px-margin-desktop">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+      <section class="max-w-container-max mx-auto px-4 md:px-margin-desktop">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
-      <div class="reveal md:col-span-7 glass-card p-8 rounded-none flex flex-col justify-between min-h-[400px] relative group">
-        <div class="relative z-10">
-          <div class="w-14 h-14 bg-surface-container-highest rounded-none flex items-center justify-center mb-8 border border-outline-variant">
-            <span class="material-symbols-outlined text-primary text-3xl" data-icon="phone_iphone">phone_iphone</span>
-          </div>
-          <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Mobile App Development</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-8">
-            Crafting high-performance, native-feel applications for iOS and Android using cross-platform architectures that reduce time-to-market without compromising quality.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="font-label-md text-label-md px-3 py-1 bg-surface-container border border-outline-variant text-secondary rounded-none">Flutter</span>
-            <span class="font-label-md text-label-md px-3 py-1 bg-surface-container border border-outline-variant text-secondary rounded-none">Dart</span>
-            <span class="font-label-md text-label-md px-3 py-1 bg-surface-container border border-outline-variant text-secondary rounded-none">Cross-platform</span>
-          </div>
+      <!-- Card 1: Mobile -->
+      <div class="reveal glass-card p-10 flex flex-col min-h-[420px] group hover:border-primary transition-colors duration-300">
+        <div class="w-16 h-16 bg-surface-container-highest flex items-center justify-center mb-8 border border-outline-variant group-hover:bg-primary/10 group-hover:border-primary/30 transition-colors">
+          <span class="material-symbols-outlined text-primary text-4xl" data-icon="phone_iphone">phone_iphone</span>
+        </div>
+        <h3 class="font-headline-md text-2xl font-bold text-on-surface mb-4">Mobile App Development</h3>
+        <p class="font-body-md text-on-surface-variant flex-grow mb-8">
+          Crafting high-performance, native-feel applications for iOS and Android using cross-platform architectures that reduce time-to-market without compromising quality.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-auto">
+          <span class="font-label-md text-xs px-3 py-1 bg-surface-container border border-outline-variant text-on-surface-variant uppercase tracking-wider">Flutter</span>
+          <span class="font-label-md text-xs px-3 py-1 bg-surface-container border border-outline-variant text-on-surface-variant uppercase tracking-wider">Dart</span>
         </div>
       </div>
 
-      <div class="reveal md:col-span-5 glass-card p-8 rounded-none flex flex-col justify-between min-h-[400px]">
-        <div>
-          <div class="w-14 h-14 bg-surface-container-highest rounded-none flex items-center justify-center mb-8 border border-outline-variant">
-            <span class="material-symbols-outlined text-secondary text-3xl" data-icon="web">web</span>
-          </div>
-          <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Full-Stack Web Development</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant mb-8">
-            End-to-end web architectures featuring interactive front-ends and robust server-side logic.
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3 font-label-md text-label-md text-on-surface-variant">
-              <span class="material-symbols-outlined text-secondary text-sm" data-icon="terminal">terminal</span> Node.js &amp; Laravel
-            </li>
-            <li class="flex items-center gap-3 font-label-md text-label-md text-on-surface-variant">
-              <span class="material-symbols-outlined text-secondary text-sm" data-icon="terminal">terminal</span> React &amp; Tailwind CSS
-            </li>
-            <li class="flex items-center gap-3 font-label-md text-label-md text-on-surface-variant">
-              <span class="material-symbols-outlined text-secondary text-sm" data-icon="terminal">terminal</span> Responsive Design
-            </li>
-          </ul>
+      <!-- Card 2: Web -->
+      <div class="reveal glass-card p-10 flex flex-col min-h-[420px] group hover:border-secondary transition-colors duration-300" data-delay="1">
+        <div class="w-16 h-16 bg-surface-container-highest flex items-center justify-center mb-8 border border-outline-variant group-hover:bg-secondary/10 group-hover:border-secondary/30 transition-colors">
+          <span class="material-symbols-outlined text-secondary text-4xl" data-icon="web">web</span>
         </div>
-        <button class="mt-8 font-label-md text-label-md text-on-surface bg-surface-container border border-outline-variant py-3 px-6 rounded-none hover:bg-surface-container-high hover:border-secondary transition-all uppercase tracking-widest text-center shadow-sm" onclick="window.location.href='projects.html'">View Projects</button>
-      </div>
-
-      <div class="reveal md:col-span-5 glass-card p-8 rounded-none flex flex-col justify-between min-h-[400px]">
-        <div>
-          <div class="w-14 h-14 bg-surface-container-highest rounded-none flex items-center justify-center mb-8 border border-outline-variant">
-            <span class="material-symbols-outlined text-tertiary text-3xl" data-icon="psychology">psychology</span>
-          </div>
-          <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Machine Learning Solutions</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant mb-8">
-            Integrating intelligence into your applications through data analysis, predictive modeling, and natural language processing.
-          </p>
-        </div>
-        <div class="bg-surface-container-lowest p-6 rounded-none border border-outline-variant font-code-sm text-code-sm text-tertiary shadow-inner">
-          <span class="text-on-surface-variant"># NLP Predictor</span><br/>
-          model.fit(X_train, y_train)<br/>
-          prediction = model.predict(query)<br/>
-          <span class="cursor-underscore">print(prediction)</span>
+        <h3 class="font-headline-md text-2xl font-bold text-on-surface mb-4">Full-Stack Web Development</h3>
+        <p class="font-body-md text-on-surface-variant flex-grow mb-8">
+          End-to-end web architectures featuring interactive front-ends, robust server-side logic, and secure database integrations.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-auto">
+          <span class="font-label-md text-xs px-3 py-1 bg-surface-container border border-outline-variant text-on-surface-variant uppercase tracking-wider">Node.js</span>
+          <span class="font-label-md text-xs px-3 py-1 bg-surface-container border border-outline-variant text-on-surface-variant uppercase tracking-wider">Laravel</span>
+          <span class="font-label-md text-xs px-3 py-1 bg-surface-container border border-outline-variant text-on-surface-variant uppercase tracking-wider">React</span>
         </div>
       </div>
 
-      <div class="reveal md:col-span-7 glass-card p-8 rounded-none flex flex-col md:flex-row gap-8 items-center min-h-[400px]">
-        <div class="flex-1">
-          <div class="w-14 h-14 bg-surface-container-highest rounded-none flex items-center justify-center mb-8 border border-outline-variant">
-            <span class="material-symbols-outlined text-primary text-3xl" data-icon="database">database</span>
-          </div>
-          <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Backend &amp; API Engineering</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant mb-8">
-            Architecting the backbone of modern applications with high-availability databases, secure API gateways, and serverless infrastructure.
-          </p>
-          <div class="flex gap-4">
-            <div class="text-center bg-surface-container p-4 border border-outline-variant rounded-none flex-1">
-              <div class="font-headline-md text-primary">99.9%</div>
-              <div class="font-label-md text-on-surface-variant">Uptime</div>
-            </div>
-            <div class="text-center bg-surface-container p-4 border border-outline-variant rounded-none flex-1">
-              <div class="font-headline-md text-secondary">100ms</div>
-              <div class="font-label-md text-on-surface-variant">Latency</div>
-            </div>
-          </div>
+      <!-- Card 3: ML / Backend -->
+      <div class="reveal glass-card p-10 flex flex-col min-h-[420px] group hover:border-tertiary transition-colors duration-300" data-delay="2">
+        <div class="w-16 h-16 bg-surface-container-highest flex items-center justify-center mb-8 border border-outline-variant group-hover:bg-tertiary/10 group-hover:border-tertiary/30 transition-colors">
+          <span class="material-symbols-outlined text-tertiary text-4xl" data-icon="psychology">psychology</span>
         </div>
-        <div class="flex-1 w-full grid grid-cols-2 gap-4">
-          <div class="bg-surface-container p-4 rounded-none border border-outline-variant flex items-center gap-3">
-            <span class="material-symbols-outlined text-on-surface-variant" data-icon="storage">storage</span>
-            <span class="font-label-md text-on-surface">MongoDB</span>
-          </div>
-          <div class="bg-surface-container p-4 rounded-none border border-outline-variant flex items-center gap-3">
-            <span class="material-symbols-outlined text-secondary" data-icon="local_fire_department">local_fire_department</span>
-            <span class="font-label-md text-on-surface">Firebase</span>
-          </div>
-          <div class="bg-surface-container p-4 rounded-none border border-outline-variant flex items-center gap-3">
-            <span class="material-symbols-outlined text-on-surface-variant" data-icon="api">api</span>
-            <span class="font-label-md text-on-surface">Express</span>
-          </div>
-          <div class="bg-surface-container p-4 rounded-none border border-outline-variant flex items-center gap-3">
-            <span class="material-symbols-outlined text-tertiary" data-icon="security">security</span>
-            <span class="font-label-md text-on-surface">OAuth 2.0</span>
-          </div>
+        <h3 class="font-headline-md text-2xl font-bold text-on-surface mb-4">Machine Learning & APIs</h3>
+        <p class="font-body-md text-on-surface-variant flex-grow mb-8">
+          Architecting scalable API gateways and integrating intelligence through data analysis, predictive modeling, and NLP.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-auto">
+          <span class="font-label-md text-xs px-3 py-1 bg-surface-container border border-outline-variant text-on-surface-variant uppercase tracking-wider">Python</span>
+          <span class="font-label-md text-xs px-3 py-1 bg-surface-container border border-outline-variant text-on-surface-variant uppercase tracking-wider">TensorFlow</span>
+          <span class="font-label-md text-xs px-3 py-1 bg-surface-container border border-outline-variant text-on-surface-variant uppercase tracking-wider">REST APIs</span>
         </div>
       </div>
+
     </div>
   </section>
 
