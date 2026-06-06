@@ -78,51 +78,53 @@
     </script>
     <style>
 
+    
     :root {
-      --background: #f8fafc;
-      --on-background: #0f172a;
+      --background: #ffffff;
+      --on-background: #202124;
       --surface: #ffffff;
-      --on-surface: #0f172a;
-      --on-surface-variant: #64748b;
+      --on-surface: #202124;
+      --on-surface-variant: #5f6368;
       --surface-container-lowest: #ffffff;
-      --surface-container-low: #f1f5f9;
-      --surface-container: #e2e8f0;
-      --surface-container-high: #cbd5e1;
-      --surface-container-highest: #e2e8f0;
-      --outline: #94a3b8;
-      --outline-variant: #cbd5e1;
-      --primary: #4f46e5;
+      --surface-container-low: #f8f9fa;
+      --surface-container: #f1f3f4;
+      --surface-container-high: #e8eaed;
+      --surface-container-highest: #dadce0;
+      --outline: #9aa0a6;
+      --outline-variant: #dadce0;
+      --primary: #1a73e8;
       --on-primary: #ffffff;
-      --primary-container: #e0e7ff;
-      --secondary: #0284c7;
+      --primary-container: #e8f0fe;
+      --secondary: #1e8e3e;
       --on-secondary: #ffffff;
-      --secondary-container: #e0f2fe;
-      --tertiary: #0f766e;
-      --tertiary-container: #ccfbf1;
+      --secondary-container: #e6f4ea;
+      --tertiary: #d93025;
+      --tertiary-container: #fce8e6;
     }
     
     html.dark {
-      --background: #0f172a;
-      --on-background: #f8fafc;
-      --surface: #1e293b;
-      --on-surface: #f8fafc;
-      --on-surface-variant: #94a3b8;
-      --surface-container-lowest: #020617;
-      --surface-container-low: #0f172a;
-      --surface-container: #1e293b;
-      --surface-container-high: #334155;
-      --surface-container-highest: #475569;
-      --outline: #64748b;
-      --outline-variant: #334155;
-      --primary: #818cf8;
-      --on-primary: #ffffff;
-      --primary-container: #3730a3;
-      --secondary: #38bdf8;
-      --on-secondary: #0f172a;
-      --secondary-container: #0369a1;
-      --tertiary: #2dd4bf;
-      --tertiary-container: #115e59;
+      --background: #202124;
+      --on-background: #e8eaed;
+      --surface: #202124;
+      --on-surface: #e8eaed;
+      --on-surface-variant: #9aa0a6;
+      --surface-container-lowest: #171717;
+      --surface-container-low: #202124;
+      --surface-container: #303134;
+      --surface-container-high: #3c4043;
+      --surface-container-highest: #5f6368;
+      --outline: #5f6368;
+      --outline-variant: #3c4043;
+      --primary: #8ab4f8;
+      --on-primary: #202124;
+      --primary-container: rgba(138, 180, 248, 0.2);
+      --secondary: #81c995;
+      --on-secondary: #202124;
+      --secondary-container: rgba(129, 201, 149, 0.2);
+      --tertiary: #f28b82;
+      --tertiary-container: rgba(242, 139, 130, 0.2);
     }
+
 
         body { min-height: max(884px, 100dvh); -webkit-font-smoothing: antialiased; }
 
@@ -180,26 +182,43 @@
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         
+        
+        
         .glass-card {
-            background: var(--surface-container); backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            background: var(--surface) !important;
+            border: 1px solid var(--outline-variant) !important;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease !important;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15) !important;
+        }
+
+        html.dark .glass-card {
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.3), 0 1px 3px 1px rgba(0,0,0,.15) !important;
+            background: var(--surface-container) !important;
         }
         
         .glass-card:hover {
-            border-color: rgba(76, 215, 246, 0.4);
-            box-shadow: 0 0 20px rgba(76, 215, 246, 0.1);
+            box-shadow: 0 4px 8px 3px rgba(60,64,67,.15), 0 1px 3px rgba(60,64,67,.3) !important;
+            transform: translateY(-2px) !important;
+            border-color: var(--primary) !important;
         }
+
+        html.dark .glass-card:hover {
+            box-shadow: 0 4px 8px 3px rgba(0,0,0,.3), 0 1px 3px rgba(0,0,0,.4) !important;
+        }
+
+
         
         .skill-chip {
-            background: #131b2e;
-            border: 1px solid #464554;
+            background: var(--surface-container-high);
+            border: 1px solid var(--outline);
             transition: all 0.2s ease;
         }
         
         .skill-chip:hover {
-            border-color: #4cd7f6;
-            color: #4cd7f6;
+            border-color: var(--secondary);
+            color: var(--secondary);
         }
         
         .hero-gradient {
@@ -229,7 +248,7 @@
         /* Typewriter Effect Styles */
         .rotating-text {
             display: inline-block;
-            color: #4cd7f6;
+            color: var(--secondary);
             font-weight: 800;
             position: relative;
             padding-right: 4px;
@@ -240,7 +259,7 @@
             content: '|';
             position: absolute;
             right: -10px;
-            color: #4cd7f6;
+            color: var(--secondary);
             animation: blink 0.8s infinite;
         }
 
@@ -280,36 +299,33 @@
     </header>
 
     <main class="pt-24">
-        <section class="relative min-h-[707px] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop hero-gradient">
-            <div class="space-y-6 max-w-4xl reveal w-full">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant mb-4">
-                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-                    <span class="font-label-md text-label-md text-secondary">Software Engineering Student</span>
+        <section class="relative min-h-[85vh] flex flex-col items-start justify-center text-left px-margin-mobile md:px-margin-desktop hero-gradient border-b border-outline-variant/30">
+            <div class="space-y-8 max-w-5xl reveal w-full z-10 pt-20">
+                <div class="inline-flex items-center gap-3 px-4 py-2 bg-surface-container border border-outline-variant rounded-none mb-4">
+                    <span class="w-2 h-2 bg-secondary animate-pulse rounded-none"></span>
+                    <span class="font-label-md text-sm text-secondary uppercase tracking-widest">Available for Opportunities</span>
                 </div>
                 
-                <h1 class="font-display text-headline-lg-mobile md:text-display text-on-surface leading-none mb-2">
-                    Hi, I'm <span class="text-primary">Umer</span>
+                <h1 class="font-display text-6xl md:text-8xl lg:text-[100px] text-on-surface leading-[1.05] tracking-tighter font-extrabold">
+                    Engineering<br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">The Future.</span>
                 </h1>
                 
-                <h2 class="font-display text-3xl md:text-5xl text-on-surface-variant h-12 md:h-16 mb-6">
-                    A <span id="rotating-text" class="rotating-text"></span>
-                </h2>
-
-                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto mb-8">
-                    Transforming complex problems into elegant, high-performance software. I engineer scalable web platforms, engaging mobile applications, and smart machine learning solutions that drive real-world value.
+                <p class="font-body-lg text-xl md:text-2xl text-on-surface-variant max-w-2xl mt-8 font-light leading-relaxed">
+                    Transforming complex problems into elegant, high-performance software. I architect scalable web platforms, robust mobile applications, and intelligent systems.
                 </p>
 
-                <div class="flex flex-row flex-wrap items-center justify-center gap-3 md:gap-4 pt-4">
-                    <button class="px-5 py-3 md:px-8 md:py-4 text-sm md:text-base border-2 border-secondary text-secondary font-bold rounded-xl hover:bg-secondary/10 transition-all duration-300 active:scale-95" onclick="window.location.href='contact.html'">
-                        Contact Me
+                <div class="flex flex-col sm:flex-row items-center justify-start gap-4 pt-8">
+                    <button class="w-full sm:w-auto px-8 py-4 bg-primary text-on-primary font-bold hover:bg-primary/90 transition-all duration-300 active:scale-95 text-lg rounded-none shadow-md hover:shadow-lg" onclick="window.location.href='contact.html'">
+                        Let's Build Together
                     </button>
-                    <button class="px-5 py-3 md:px-8 md:py-4 text-sm md:text-base border-2 border-tertiary text-tertiary font-bold rounded-xl hover:bg-tertiary/10 transition-all duration-300 active:scale-95 flex items-center gap-2" id="download-resume-btn">
-                        <span class="material-symbols-outlined text-sm md:text-lg">download</span>
-                        Resume
+                    <button class="w-full sm:w-auto px-8 py-4 bg-surface-container text-on-surface font-bold border border-outline-variant hover:bg-surface-container-high hover:border-secondary transition-all duration-300 active:scale-95 text-lg rounded-none flex items-center justify-center gap-2" id="download-resume-btn">
+                        <span class="material-symbols-outlined text-xl">download</span>
+                        View Resume
                     </button>
                 </div>
             </div>
-            <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
+
         </section>
 
         <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
@@ -320,30 +336,45 @@
                 </div>
                 <div class="font-label-md text-label-md text-outline">/ SKILLS / EXPERTISE</div>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <div class="glass-card p-6 rounded-xl flex flex-col items-center gap-4 text-center reveal">
-                    <span class="material-symbols-outlined text-4xl text-secondary" data-icon="flutter_dash">flutter_dash</span>
-                    <span class="font-label-md text-label-md">Flutter</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[220px]">
+                <!-- Large Card: Mobile & Cloud -->
+                <div class="glass-card p-8 flex flex-col justify-between col-span-1 md:col-span-2 reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-5xl text-secondary" data-icon="flutter_dash">flutter_dash</span>
+                        <span class="material-symbols-outlined text-5xl text-primary" data-icon="local_fire_department">local_fire_department</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-2xl text-on-surface mb-2">Mobile & Cloud Architecture</h3>
+                        <p class="text-on-surface-variant text-sm max-w-md">Building native-feeling cross-platform applications with Flutter and highly scalable Firebase backends.</p>
+                    </div>
                 </div>
-                <div class="glass-card p-6 rounded-xl flex flex-col items-center gap-4 text-center reveal">
-                    <span class="material-symbols-outlined text-4xl text-secondary" data-icon="local_fire_department">local_fire_department</span>
-                    <span class="font-label-md text-label-md">Firebase</span>
+
+                <!-- Tall Card: Machine Learning -->
+                <div class="glass-card p-8 flex flex-col justify-between col-span-1 md:col-span-1 lg:col-span-2 row-span-2 reveal">
+                    <div class="w-20 h-20 bg-surface-container-highest flex items-center justify-center border border-outline-variant">
+                        <span class="material-symbols-outlined text-5xl text-tertiary" data-icon="psychology">psychology</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-3xl text-on-surface mb-4">Machine Learning & AI</h3>
+                        <p class="text-on-surface-variant mb-6 text-lg">Developing intelligent systems using Python, integrating predictive models and natural language processing directly into modern applications.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-4 py-2 bg-surface-container-highest border border-outline-variant text-sm font-label-md text-secondary">Python</span>
+                            <span class="px-4 py-2 bg-surface-container-highest border border-outline-variant text-sm font-label-md text-secondary">Scikit-Learn</span>
+                            <span class="px-4 py-2 bg-surface-container-highest border border-outline-variant text-sm font-label-md text-secondary">TensorFlow</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-card p-6 rounded-xl flex flex-col items-center gap-4 text-center reveal">
-                    <span class="material-symbols-outlined text-4xl text-secondary" data-icon="javascript">javascript</span>
-                    <span class="font-label-md text-label-md">Node.js</span>
+
+                <!-- Small Card: Node -->
+                <div class="glass-card p-8 flex flex-col justify-center items-center text-center reveal">
+                    <span class="material-symbols-outlined text-6xl text-secondary mb-6" data-icon="javascript">javascript</span>
+                    <h3 class="font-display font-bold text-xl text-on-surface">Node.js Ecosystem</h3>
                 </div>
-                <div class="glass-card p-6 rounded-xl flex flex-col items-center gap-4 text-center reveal">
-                    <span class="material-symbols-outlined text-4xl text-secondary" data-icon="php">php</span>
-                    <span class="font-label-md text-label-md">Laravel</span>
-                </div>
-                <div class="glass-card p-6 rounded-xl flex flex-col items-center gap-4 text-center reveal">
-                    <span class="material-symbols-outlined text-4xl text-secondary" data-icon="code_blocks">code_blocks</span>
-                    <span class="font-label-md text-label-md">Python</span>
-                </div>
-                <div class="glass-card p-6 rounded-xl flex flex-col items-center gap-4 text-center reveal">
-                    <span class="material-symbols-outlined text-4xl text-secondary" data-icon="psychology">psychology</span>
-                    <span class="font-label-md text-label-md">Machine Learning</span>
+
+                <!-- Small Card: Laravel -->
+                <div class="glass-card p-8 flex flex-col justify-center items-center text-center reveal">
+                    <span class="material-symbols-outlined text-6xl text-secondary mb-6" data-icon="php">php</span>
+                    <h3 class="font-display font-bold text-xl text-on-surface">Laravel Framework</h3>
                 </div>
             </div>
         </section>

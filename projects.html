@@ -78,51 +78,53 @@
     </script>
     <style>
 
+    
     :root {
-      --background: #f8fafc;
-      --on-background: #0f172a;
+      --background: #ffffff;
+      --on-background: #202124;
       --surface: #ffffff;
-      --on-surface: #0f172a;
-      --on-surface-variant: #64748b;
+      --on-surface: #202124;
+      --on-surface-variant: #5f6368;
       --surface-container-lowest: #ffffff;
-      --surface-container-low: #f1f5f9;
-      --surface-container: #e2e8f0;
-      --surface-container-high: #cbd5e1;
-      --surface-container-highest: #e2e8f0;
-      --outline: #94a3b8;
-      --outline-variant: #cbd5e1;
-      --primary: #4f46e5;
+      --surface-container-low: #f8f9fa;
+      --surface-container: #f1f3f4;
+      --surface-container-high: #e8eaed;
+      --surface-container-highest: #dadce0;
+      --outline: #9aa0a6;
+      --outline-variant: #dadce0;
+      --primary: #1a73e8;
       --on-primary: #ffffff;
-      --primary-container: #e0e7ff;
-      --secondary: #0284c7;
+      --primary-container: #e8f0fe;
+      --secondary: #1e8e3e;
       --on-secondary: #ffffff;
-      --secondary-container: #e0f2fe;
-      --tertiary: #0f766e;
-      --tertiary-container: #ccfbf1;
+      --secondary-container: #e6f4ea;
+      --tertiary: #d93025;
+      --tertiary-container: #fce8e6;
     }
     
     html.dark {
-      --background: #0f172a;
-      --on-background: #f8fafc;
-      --surface: #1e293b;
-      --on-surface: #f8fafc;
-      --on-surface-variant: #94a3b8;
-      --surface-container-lowest: #020617;
-      --surface-container-low: #0f172a;
-      --surface-container: #1e293b;
-      --surface-container-high: #334155;
-      --surface-container-highest: #475569;
-      --outline: #64748b;
-      --outline-variant: #334155;
-      --primary: #818cf8;
-      --on-primary: #ffffff;
-      --primary-container: #3730a3;
-      --secondary: #38bdf8;
-      --on-secondary: #0f172a;
-      --secondary-container: #0369a1;
-      --tertiary: #2dd4bf;
-      --tertiary-container: #115e59;
+      --background: #202124;
+      --on-background: #e8eaed;
+      --surface: #202124;
+      --on-surface: #e8eaed;
+      --on-surface-variant: #9aa0a6;
+      --surface-container-lowest: #171717;
+      --surface-container-low: #202124;
+      --surface-container: #303134;
+      --surface-container-high: #3c4043;
+      --surface-container-highest: #5f6368;
+      --outline: #5f6368;
+      --outline-variant: #3c4043;
+      --primary: #8ab4f8;
+      --on-primary: #202124;
+      --primary-container: rgba(138, 180, 248, 0.2);
+      --secondary: #81c995;
+      --on-secondary: #202124;
+      --secondary-container: rgba(129, 201, 149, 0.2);
+      --tertiary: #f28b82;
+      --tertiary-container: rgba(242, 139, 130, 0.2);
     }
+
 
         body { min-height: max(884px, 100dvh); -webkit-font-smoothing: antialiased; }
 
@@ -133,18 +135,33 @@
             padding-left: env(titlebar-area-left, 0px);
         }
 
+        
+        
         .glass-card {
-            background: var(--surface-container); backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            border-left: 1px solid rgba(255, 255, 255, 0.15);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--surface) !important;
+            border: 1px solid var(--outline-variant) !important;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease !important;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15) !important;
+        }
+
+        html.dark .glass-card {
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.3), 0 1px 3px 1px rgba(0,0,0,.15) !important;
+            background: var(--surface-container) !important;
         }
         
         .glass-card:hover {
-            border-color: rgba(76, 215, 246, 0.3);
-            box-shadow: 0 0 20px rgba(76, 215, 246, 0.1);
+            box-shadow: 0 4px 8px 3px rgba(60,64,67,.15), 0 1px 3px rgba(60,64,67,.3) !important;
+            transform: translateY(-2px) !important;
+            border-color: var(--primary) !important;
         }
+
+        html.dark .glass-card:hover {
+            box-shadow: 0 4px 8px 3px rgba(0,0,0,.3), 0 1px 3px rgba(0,0,0,.4) !important;
+        }
+
+
         
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
