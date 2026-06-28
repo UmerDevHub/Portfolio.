@@ -1,33 +1,16 @@
-# Umer Nisar | Software Engineering Portfolio 🚀
+# React + Vite
 
-> A personal developer portfolio showcasing my technical arsenal, projects, and journey as a Software Engineering student. Engineered for performance, responsiveness, and a premium user experience.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-🌐 **Live Demo:** [View Portfolio](portfolio-liard-seven-opt8nae20v.vercel.app) *(Replace with your actual Vercel link)*
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## ✨ Features
+## React Compiler
 
-- **Modern UI/UX:** Built with a clean, dark-themed bento-grid layout and glassmorphism elements.
-- **Dynamic Typing Effect:** Custom JavaScript typewriter effect cycling through core skills.
-- **Scroll Reveal Animations:** Smooth, performance-optimized animations trigger as users scroll down the page.
-- **Fully Responsive:** Optimized for seamless viewing on mobile, tablet, and desktop devices.
-- **Theme Toggle:** Built-in Dark/Light mode switching based on user preference.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 🛠️ Tech Stack
+## Expanding the Oxlint configuration
 
-This project is built using lightweight, vanilla web technologies to ensure maximum speed without the overhead of heavy frameworks:
-
-- **HTML5** - Semantic markup and structure
-- **Tailwind CSS (CDN)** - Utility-first styling and responsive design
-- **Vanilla JavaScript** - DOM manipulation, typing effects, and intersection observers for scroll animations
-- **Google Fonts** - 'Inter' for body text and 'JetBrains Mono' for code snippets
-- **Vercel** - CI/CD and Live Hosting
-
-## 💻 Local Setup
-
-Since this project uses vanilla HTML/JS and Tailwind via CDN, there are no complex build steps or dependencies to install.
-
-1. **Clone the repository:**
-```bash
-   git clone [https://github.com/UmerDevHub/Portfolio..git](https://github.com/UmerDevHub/Portfolio..git)
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
