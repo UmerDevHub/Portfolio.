@@ -123,8 +123,8 @@ export default function Navbar() {
           {/* Right Section Buttons - Desktop */}
           <div className="hidden md:flex items-center gap-4">
             <motion.a
-              href="/assets/resume/Resume.pdf"
-              target="_blank"
+              href="/assets/resume/UmerNisar-Resume_.pdf"
+              download="UmerNisar-Resume.pdf"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -226,15 +226,15 @@ export default function Navbar() {
               {/* Action Buttons in drawer */}
               <div className="flex flex-col gap-4 border-t border-white/10 pt-6">
                 <motion.a
-                  href="/assets/resume/Resume.pdf"
-                  target="_blank"
+                  href="/assets/resume/UmerNisar-Resume_.pdf"
+                  download="UmerNisar-Resume.pdf"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="flex items-center justify-center gap-2 border border-white/20 hover:border-accent-violet text-white hover:text-accent-hover rounded-full py-3 text-sm font-medium transition-colors duration-300"
                 >
                   <FiFileText size={16} />
-                  Resume
+                  Download Resume
                 </motion.a>
                 <motion.a
                   href="#contact"

@@ -12,13 +12,37 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
 };
 
+const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+
+// Map of chip labels → Devicon SVG URLs for tech chips
+const chipIconMap = {
+  'HTML5':       `${DEVICON}/html5/html5-original.svg`,
+  'CSS3':        `${DEVICON}/css3/css3-original.svg`,
+  'JavaScript':  `${DEVICON}/javascript/javascript-original.svg`,
+  'React.js':    `${DEVICON}/react/react-original.svg`,
+  'Node.js':     `${DEVICON}/nodejs/nodejs-original.svg`,
+  'REST APIs':   `${DEVICON}/fastapi/fastapi-original.svg`,
+};
+
 function Chip({ label, color = 'default' }) {
   const colorMap = {
     default: 'bg-white/5 border-white/10 text-text-secondary',
     violet:  'bg-accent-violet/10 border-accent-violet/20 text-[#C4B5FD]',
   };
+  const iconSrc = chipIconMap[label];
   return (
-    <span className={`text-[11px] font-body font-medium rounded-full px-3 py-1 border ${colorMap[color]}`}>
+    <span className={`inline-flex items-center gap-1.5 text-[11px] font-body font-medium rounded-full px-3 py-1 border ${colorMap[color]}`}>
+      {iconSrc && (
+        <img
+          src={iconSrc}
+          alt={label}
+          width={13}
+          height={13}
+          loading="lazy"
+          decoding="async"
+          className="w-3 h-3 object-contain flex-shrink-0"
+        />
+      )}
       {label}
     </span>
   );
